@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerMovements : MonoBehaviour
 {
+    [SerializeField] float fastRunCoeff = 1.5f;
+
     Animator animator;
     Vector3 movement;
     Quaternion rotation = Quaternion.identity;//per salvare il valore della rotazione
@@ -41,7 +43,9 @@ public class PlayerMovements : MonoBehaviour
         rotation = Quaternion.LookRotation(desiredForward);//salvo la rotazione
 
         animator.SetBool("Jumping", Input.GetKeyDown(KeyCode.Space));
+
         
+
 
     }
 
@@ -49,7 +53,11 @@ public class PlayerMovements : MonoBehaviour
     private void OnAnimatorMove()//This method allows you to apply root motion as you want, which means that movement and rotation can be applied separately.
     {
         if(animator.GetBool("Jumping") && trans.position.y<.3f) rigidBody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);//salta solo se e' a terra
-        rigidBody.MovePosition(rigidBody.position + movement * animator.deltaPosition.magnitude);//applico il movimento
+        if (Input.GetKey(KeyCode.LeftShift))
+            rigidBody.MovePosition(rigidBody.position + movement * fastRunCoeff * animator.deltaPosition.magnitude);//applico il movimento con velocita' maggiore
+        else
+            rigidBody.MovePosition(rigidBody.position + movement * animator.deltaPosition.magnitude);//applico il movimento
+
         rigidBody.MoveRotation(rotation);//applica la rotazione
     }
 }

@@ -15,5 +15,6 @@ public class SwordmanMovements : MonoBehaviour
     void FixedUpdate()//To make sure the movement vector and rotation are set in time with OnAnimatorMove, change your Update method to a FixedUpdate
     {
         animator.SetBool("Block", Input.GetKey(KeyCode.E));
+        animator.SetBool("FastRunning", Input.GetKey(KeyCode.LeftShift));
     }
 }

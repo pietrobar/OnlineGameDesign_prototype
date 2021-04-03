@@ -911,6 +911,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f69bea2f6f32e57489677a559c1e29b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fastRunCoeff: 1.8
   turnSpeed: 20
   jumpForce: 4.6
 --- !u!136 &185442816
@@ -941,7 +942,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!4 &185442819 stripped
 Transform:
@@ -4083,8 +4084,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 16, y: 0.5, z: 16}
-  m_Center: {x: 0, y: -0.25, z: 0}
+  m_Size: {x: 16, y: 0.5, z: 51.59903}
+  m_Center: {x: 0, y: -0.25, z: 17.799515}
 --- !u!1 &862712532
 GameObject:
   m_ObjectHideFlags: 0
