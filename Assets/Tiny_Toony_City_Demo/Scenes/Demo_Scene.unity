@@ -913,7 +913,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fastRunCoeff: 2.2
   turnSpeed: 20
-  jumpForce: 4.6
+  jumpForce: 3
 --- !u!136 &185442816
 CapsuleCollider:
   m_ObjectHideFlags: 0

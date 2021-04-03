@@ -52,12 +52,27 @@ public class PlayerMovements : MonoBehaviour
     //OnAnimatorMove is actually going to be called in time with physics, and not with rendering like your Update method
     private void OnAnimatorMove()//This method allows you to apply root motion as you want, which means that movement and rotation can be applied separately.
     {
-        if(animator.GetBool("Jumping") && trans.position.y<.3f) rigidBody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);//salta solo se e' a terra
         if (Input.GetKey(KeyCode.LeftShift))
             rigidBody.MovePosition(rigidBody.position + movement * fastRunCoeff * animator.deltaPosition.magnitude);//applico il movimento con velocita' maggiore
         else
             rigidBody.MovePosition(rigidBody.position + movement * animator.deltaPosition.magnitude);//applico il movimento
 
+        if (animator.GetBool("Jumping") && trans.position.y < .3f)
+        {
+            if(rigidBody.velocity.x>=0 || rigidBody.velocity.z >= 0)//voglio continuare a muovermi anche quando salto
+            {
+                rigidBody.AddForce(new Vector3(movement.x,1f,movement.z)* jumpForce , ForceMode.VelocityChange);//salta solo se e' a terra
+
+            }
+            rigidBody.AddForce(Vector3.up * jumpForce, ForceMode.VelocityChange);//salta solo se e' a terra
+        }
+        
+
         rigidBody.MoveRotation(rotation);//applica la rotazione
+    }
+
+    public Vector3 getMovement()
+    {
+        return movement;
     }
 }
