@@ -16,5 +16,6 @@ public class SwordmanMovements : MonoBehaviour
     {
         animator.SetBool("Block", Input.GetKey(KeyCode.E));
         animator.SetBool("FastRunning", Input.GetKey(KeyCode.LeftShift));
+        if(Input.GetKeyDown(KeyCode.Mouse0)) animator.SetTrigger("Attack");
     }
 }
