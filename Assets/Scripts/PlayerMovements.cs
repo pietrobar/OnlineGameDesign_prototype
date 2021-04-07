@@ -14,6 +14,7 @@ public class PlayerMovements : MonoBehaviour
     Rigidbody rigidBody;
     Transform trans;
 
+    public Transform groundCheckTransform;
 
 
     void Start()
@@ -53,11 +54,11 @@ public class PlayerMovements : MonoBehaviour
     private void OnAnimatorMove()//This method allows you to apply root motion as you want, which means that movement and rotation can be applied separately.
     {
         if (Input.GetKey(KeyCode.LeftShift))
-            rigidBody.MovePosition(rigidBody.position + movement * fastRunCoeff * animator.deltaPosition.magnitude);//applico il movimento con velocita' maggiore
+            rigidBody.MovePosition(rigidBody.position + movement * fastRunCoeff );//applico il movimento con velocita' maggiore
         else
             rigidBody.MovePosition(rigidBody.position + movement * animator.deltaPosition.magnitude);//applico il movimento
 
-        if (animator.GetBool("Jumping") && trans.position.y < .3f)
+        if (animator.GetBool("Jumping") && isGrounded())
         {
             if(rigidBody.velocity.x>=0 || rigidBody.velocity.z >= 0)//voglio continuare a muovermi anche quando salto
             {
@@ -74,5 +75,11 @@ public class PlayerMovements : MonoBehaviour
     public Vector3 getMovement()
     {
         return movement;
+    }
+
+    public bool isGrounded()
+    {
+        //overlapSphere ritorna un array di collider, se la sfera non tocca nessun collider(a parte quello del giocatore stesso vuol dire che sono a terra
+        return Physics.OverlapSphere(groundCheckTransform.position, 0.3f).Length > 1;
     }
 }
