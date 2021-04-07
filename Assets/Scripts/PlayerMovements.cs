@@ -8,11 +8,12 @@ public class PlayerMovements : MonoBehaviour
 
     Animator animator;
     Vector3 movement;
-    Quaternion rotation = Quaternion.identity;//per salvare il valore della rotazione
     public float turnSpeed = 20f;
     public float jumpForce;
     Rigidbody rigidBody;
     Transform trans;
+    public float visualRotationSpeed = 3f;
+    float visualRotationAngle;
 
     public Transform groundCheckTransform;
 
@@ -23,30 +24,30 @@ public class PlayerMovements : MonoBehaviour
         rigidBody = GetComponent<Rigidbody>();
         trans = GetComponent<Transform>();
     }
+    private void Update()
+    {
+        LookAtMouse();
+    }
+
+    private void LookAtMouse()//il giocatore segue il mouse ruotando lungo l'asse y, la camera lo segue perche' e' suo figlio nella gerarchia
+    {
+        visualRotationAngle += Input.GetAxis("Mouse X") * visualRotationSpeed * Time.deltaTime;
+        trans.localRotation = Quaternion.AngleAxis(visualRotationAngle, Vector3.up);//ruota solo lungo y
+
+    }
 
     void FixedUpdate()//To make sure the movement vector and rotation are set in time with OnAnimatorMove, change your Update method to a FixedUpdate
     {
-        float horizontal = Input.GetAxis("Horizontal");//prendo l'input orizzontale (A e D)
         float vertical = Input.GetAxis("Vertical");//prendo l'input verticale (W e S)
 
-        movement.Set(horizontal, 0f, vertical);//salvo gli spostamenti che devo fare
-        movement.Normalize();//perche' pitagora fa schifo, si sposta piu' velocemente sulla diagonale
+        movement = trans.forward* vertical;
 
-        bool hasHorizontalInput = !Mathf.Approximately(horizontal, 0f);
-        bool hasVerticalInput = !Mathf.Approximately(vertical, 0f);//guarda se i parametri passati sono approssimativamente uguali, se lo sono vuol dire che non si sta muovendo lungo l'asse
-        bool running = hasHorizontalInput || hasVerticalInput;
+        bool running = !Mathf.Approximately(vertical, 0f);//guarda se i parametri passati sono approssimativamente uguali, se lo sono vuol dire che non si sta muovendo lungo l'asse
 
+        //Animazioni comuni a tutti i player
         animator.SetBool("Running", running);//attivo l'animazione
 
-
-        Vector3 desiredForward = Vector3.RotateTowards(trans.forward, movement, turnSpeed * Time.deltaTime, 0f);//calcolo verso dove ruotare il personaggio
-
-        rotation = Quaternion.LookRotation(desiredForward);//salvo la rotazione
-
         animator.SetBool("Jumping", Input.GetKeyDown(KeyCode.Space));
-
-        
-
 
     }
 
@@ -69,7 +70,6 @@ public class PlayerMovements : MonoBehaviour
         }
         
 
-        rigidBody.MoveRotation(rotation);//applica la rotazione
     }
 
     public Vector3 getMovement()
