@@ -49,6 +49,7 @@ public class PlayerMovements : MonoBehaviour
 
         animator.SetBool("Jumping", Input.GetKeyDown(KeyCode.Space));
 
+        animator.SetBool("FastRunning", Input.GetKey(KeyCode.LeftShift));
     }
 
     //OnAnimatorMove is actually going to be called in time with physics, and not with rendering like your Update method

@@ -19,7 +19,7 @@ public class SwordmanMovements : MonoBehaviour
     {
         //In questo metodo gestisco le animazioni del player in questione
         animator.SetBool("Block", Input.GetKey(KeyCode.E));
-        animator.SetBool("FastRunning", Input.GetKey(KeyCode.LeftShift));
+        
 
         //voglio discernere i casi in cui corro e voglio attaccare con la spada, e il caso in cui attacco da fermo
         if (Input.GetKeyDown(KeyCode.Mouse0) && (animator.GetBool("FastRunning") || animator.GetBool("Running")) && GetComponent<PlayerMovements>().isGrounded())
