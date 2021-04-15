@@ -6,7 +6,6 @@ public class CameraCollision : MonoBehaviour
 {
     public float minDistance = 1.0f;
     public float maxDistance = 4.0f;
-    public float smooth = 10f;
     Vector3 playerDir;
     public Vector3 playerDirAdjusted;
     public float distance;
@@ -30,6 +29,6 @@ public class CameraCollision : MonoBehaviour
         {
             distance = maxDistance;
         }
-        transform.localPosition = Vector3.Lerp(transform.localPosition, playerDir * distance, Time.deltaTime * smooth);
+        transform.localPosition = Vector3.Lerp(transform.localPosition, playerDir * distance, Time.deltaTime );
     }
 }

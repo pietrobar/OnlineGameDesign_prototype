@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
     private void LoadCharacter()
     {
         int characterIndex = PlayerPrefs.GetInt("CharacterIndex");
-        _player = Instantiate(characterPrefab[characterIndex]);
+        //_player = Instantiate(characterPrefab[characterIndex]);
     }
 
     public void ButtonSetting()

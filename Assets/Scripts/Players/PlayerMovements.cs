@@ -24,10 +24,7 @@ public class PlayerMovements : MonoBehaviour
         rigidBody = GetComponent<Rigidbody>();
         trans = GetComponent<Transform>();
     }
-    private void Update()
-    {
-        LookAtMouse();
-    }
+   
 
     private void LookAtMouse()//il giocatore segue il mouse ruotando lungo l'asse y, la camera lo segue perche' e' suo figlio nella gerarchia
     {
@@ -36,8 +33,9 @@ public class PlayerMovements : MonoBehaviour
 
     }
 
-    void FixedUpdate()//To make sure the movement vector and rotation are set in time with OnAnimatorMove, change your Update method to a FixedUpdate
+    void Update()//To make sure the movement vector and rotation are set in time with OnAnimatorMove, change your Update method to a FixedUpdate
     {
+        LookAtMouse();
         float vertical = Input.GetAxis("Vertical");//prendo l'input verticale (W e S)
 
         movement = trans.forward* vertical;
@@ -50,26 +48,31 @@ public class PlayerMovements : MonoBehaviour
         animator.SetBool("Jumping", Input.GetKeyDown(KeyCode.Space));
 
         animator.SetBool("FastRunning", Input.GetKey(KeyCode.LeftShift));
+
     }
 
     //OnAnimatorMove is actually going to be called in time with physics, and not with rendering like your Update method
     private void OnAnimatorMove()//This method allows you to apply root motion as you want, which means that movement and rotation can be applied separately.
     {
-        if (Input.GetKey(KeyCode.LeftShift))
-            rigidBody.MovePosition(rigidBody.position + movement * fastRunCoeff );//applico il movimento con velocita' maggiore
-        else
-            rigidBody.MovePosition(rigidBody.position + movement * animator.deltaPosition.magnitude);//applico il movimento
-
-        if (animator.GetBool("Jumping") && isGrounded())
+        if (animator)//controllo che l'animator non sia null
         {
-            if(rigidBody.velocity.x>=0 || rigidBody.velocity.z >= 0)//voglio continuare a muovermi anche quando salto
-            {
-                rigidBody.AddForce(new Vector3(movement.x,1f,movement.z)* jumpForce , ForceMode.VelocityChange);//salta solo se e' a terra
+            if (Input.GetKey(KeyCode.LeftShift))
+                rigidBody.MovePosition(rigidBody.position + movement * fastRunCoeff);//applico il movimento con velocita' maggiore
+            else
+                rigidBody.MovePosition(rigidBody.position + movement * animator.deltaPosition.magnitude);//applico il movimento
 
+            if (animator.GetBool("Jumping") && isGrounded())
+            {
+                if (rigidBody.velocity.x >= 0 || rigidBody.velocity.z >= 0)//voglio continuare a muovermi anche quando salto
+                {
+                    rigidBody.AddForce(new Vector3(movement.x, 1f, movement.z) * jumpForce, ForceMode.VelocityChange);//salta solo se e' a terra
+
+                }
+                rigidBody.AddForce(Vector3.up * jumpForce, ForceMode.VelocityChange);//salta solo se e' a terra
             }
-            rigidBody.AddForce(Vector3.up * jumpForce, ForceMode.VelocityChange);//salta solo se e' a terra
+
         }
-        
+
 
     }
 
