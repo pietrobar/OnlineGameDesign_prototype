@@ -37,9 +37,12 @@ public class GameManager : MonoBehaviour
         //_player = Instantiate(characterPrefab[characterIndex]);
     }
 
-    public void ButtonSetting()
+    public void ButtonSetting()//rotella
     {
         panelSetting.SetActive(true);
+        /*panelSetting.transform.GetChild(1).GetChild(0).GetChild(1).GetComponent<CountThings>().AddCount();
+        Newspaper.newspaperCount;*/
+
     }
 
     public void ButtonExit()

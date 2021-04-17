@@ -1327,7 +1327,7 @@ GameObject:
   - component: {fileID: -9184698784661646663}
   m_Layer: 0
   m_Name: FakeArcher
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
