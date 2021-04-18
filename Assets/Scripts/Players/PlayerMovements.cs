@@ -61,6 +61,7 @@ public class PlayerMovements : MonoBehaviour
             else
                 rigidBody.MovePosition(rigidBody.position + movement * animator.deltaPosition.magnitude);//applico il movimento
 
+            
             if (animator.GetBool("Jumping") && isGrounded())
             {
                 if (rigidBody.velocity.x >= 0 || rigidBody.velocity.z >= 0)//voglio continuare a muovermi anche quando salto

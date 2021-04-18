@@ -31,6 +31,6 @@ public class NetworkManager : Photon.MonoBehaviour
     void OnJoinedRoom()
     {
         //instanzio il giocatore
-        PhotonNetwork.Instantiate("ciccio", spawnPoint.position, spawnPoint.rotation, 0);
+        PhotonNetwork.Instantiate("Magician", spawnPoint.position, spawnPoint.rotation, 0);
     }
 }

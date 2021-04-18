@@ -30,7 +30,6 @@ public class ArcheryShoot : MonoBehaviour
         {
             
             forceCharge=(int)(forceCharge + Time.deltaTime *chargeSpeed);
-            Debug.Log(forceCharge);
             InstantiateAndGrow();
         }
         else if (Input.GetButtonUp("Fire1"))

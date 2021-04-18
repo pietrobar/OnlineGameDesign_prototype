@@ -9,8 +9,6 @@ public class EnemyHealth : MonoBehaviour
     public int expGiven = 10;
 
     public HealthBar healthBar;
-    public CountXP countXP;
-
     private Animator animator;
 
     // Start is called before the first frame update
@@ -34,7 +32,7 @@ public class EnemyHealth : MonoBehaviour
     private void SimpleDie()
     {
         animator.SetTrigger("die");
-        countXP.AddXP(expGiven);
+        CountXP.setXP(expGiven);
         Destroy(gameObject,2);
     }
 }

@@ -15,6 +15,10 @@ public class ProjectileTuT : MonoBehaviour
             collided = true;
 
             var impact = Instantiate(impactVFX, collision.contacts[0].point, Quaternion.identity) as GameObject;
+            if (collision.gameObject.tag == "Enemy")
+                collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(force/100 + 0.1f);
+
+
             Destroy(impact, 2);
             Destroy(gameObject);
         }

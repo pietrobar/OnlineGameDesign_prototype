@@ -21,10 +21,4 @@ public class CountThings : MonoBehaviour
         label.text = "Newspaper: " + Newspaper.newspaperCount + "/" + all;
     }
 
-    /*public void AddCount()
-    {
-        n++;
-    }*/
-
-
 }

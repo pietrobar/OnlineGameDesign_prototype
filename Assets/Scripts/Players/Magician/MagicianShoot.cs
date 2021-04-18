@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Projectile : MonoBehaviour
+public class MagicianShoot : MonoBehaviour
 {
     Transform player;
     Vector3 destination;
@@ -11,7 +11,6 @@ public class Projectile : MonoBehaviour
     public Transform firePoint; // da dove spara, per ora sarà il player stesso, ma ho messo pubblico per un futuro cambiamento
     public float projectileSpeed = 30f;
     public float arcRange = 1f;
-    public Text labelCharge;
     private int forceCharge = 0;
     GameObject projectileObj;
 
@@ -19,7 +18,7 @@ public class Projectile : MonoBehaviour
     void Start()
     {
         player = GetComponent<Transform>();
-        firePoint = player; // per ora
+        //firePoint = player; // per ora
     }
 
     // Update is called once per frame
@@ -27,7 +26,7 @@ public class Projectile : MonoBehaviour
     {
         if (Input.GetButton("Fire1"))
         {
-            forceCharge++;
+            if(forceCharge<1000)forceCharge++;
             InstantiateAndGrow();
         }
         else if (Input.GetButtonUp("Fire1"))
@@ -35,7 +34,6 @@ public class Projectile : MonoBehaviour
             ShootProjectile();
             forceCharge = 0;
         }
-        labelCharge.text = "Force: " + forceCharge;
 
         //if (Input.GetButtonDown("Fire1"))
         //{
@@ -45,7 +43,7 @@ public class Projectile : MonoBehaviour
 
     void ShootProjectile()
     {
-        Ray ray = new Ray(player.position, new Vector3(0f, 0f, 0.5f));
+        Ray ray = new Ray(player.position, player.forward);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
             destination = hit.point;
@@ -59,7 +57,7 @@ public class Projectile : MonoBehaviour
     {
         if (forceCharge == 1)
         {
-            projectileObj = Instantiate(projectile, firePoint.position + new Vector3(0f, 0f, 0.5f), Quaternion.identity) as GameObject;
+            projectileObj = Instantiate(projectile, firePoint.position, transform.rotation * Quaternion.AngleAxis(90, Vector3.up)) as GameObject;
             projectileObj.transform.SetParent(player.transform);
         }
         else
@@ -77,6 +75,7 @@ public class Projectile : MonoBehaviour
         projectileObj.GetComponent<ProjectileTuT>().force = forceCharge;
 
         iTween.PunchPosition(projectileObj, new Vector3(Random.Range(-arcRange, arcRange), Random.Range(-arcRange, arcRange), 0), Random.Range(0.5f, 2f));
+        Destroy(projectileObj, 5);
 
     }
 
