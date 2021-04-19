@@ -13,6 +13,7 @@ public class ArcheryShoot : MonoBehaviour
     private int forceCharge = 1;
     GameObject projectileObj;
     private Animator animator;
+    private bool fire1Pressed = false;
 
     // Start is called before the first frame update
     void Start()
@@ -28,14 +29,23 @@ public class ArcheryShoot : MonoBehaviour
     {
         if (Input.GetButton("Fire1"))
         {
-            
-            forceCharge=(int)(forceCharge + Time.deltaTime *chargeSpeed);
-            InstantiateAndGrow();
+            fire1Pressed = true;
         }
         else if (Input.GetButtonUp("Fire1"))
         {
+            fire1Pressed = false;
             ShootProjectile();
             forceCharge = 1;
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if(fire1Pressed)
+        {
+            //forceCharge = (int)(forceCharge + Time.deltaTime * chargeSpeed);
+            if(forceCharge<1000)forceCharge++;
+            InstantiateAndGrow();
         }
     }
 
@@ -73,7 +83,7 @@ public class ArcheryShoot : MonoBehaviour
 
         projectileObj.transform.parent = null;
         projectileObj.AddComponent<Rigidbody>();
-        projectileObj.GetComponent<Rigidbody>().velocity = (destination - firePoint.position).normalized * forceCharge;
+        projectileObj.GetComponent<Rigidbody>().velocity = (destination - firePoint.position).normalized * forceCharge/2;
         projectileObj.GetComponent<BowTut>().force = forceCharge;
     }
 }

@@ -13,6 +13,7 @@ public class MagicianShoot : MonoBehaviour
     public float arcRange = 1f;
     private int forceCharge = 0;
     GameObject projectileObj;
+    private bool fire1Pressed = false;
 
     // Start is called before the first frame update
     void Start()
@@ -26,19 +27,23 @@ public class MagicianShoot : MonoBehaviour
     {
         if (Input.GetButton("Fire1"))
         {
-            if(forceCharge<1000)forceCharge++;
-            InstantiateAndGrow();
+            fire1Pressed = true;
         }
         else if (Input.GetButtonUp("Fire1"))
         {
+            fire1Pressed = false;
             ShootProjectile();
             forceCharge = 0;
         }
+    }
 
-        //if (Input.GetButtonDown("Fire1"))
-        //{
-        //    ShootProjectile();
-        //}
+    private void FixedUpdate()
+    {
+        if (fire1Pressed)
+        {
+            if (forceCharge < 1000) forceCharge++;
+            InstantiateAndGrow();
+        }
     }
 
     void ShootProjectile()
@@ -62,28 +67,29 @@ public class MagicianShoot : MonoBehaviour
         }
         else
         {
-            GameObject particleBullet = projectileObj.transform.GetChild(0).gameObject;
-            ParticleSystem ps = particleBullet.GetComponent<ParticleSystem>();
-            ParticleSystem.MainModule psmain = ps.main;
-            psmain.startSize = forceCharge / 50;
+            if (projectileObj) // se collide mentre l'abbiamo ancora in mano (magari siamo troppo vicino ad un nemico)
+            {
+                projectileObj.transform.position = firePoint.position;
+
+                GameObject particleBullet = projectileObj.transform.GetChild(0).gameObject;
+                ParticleSystem ps = particleBullet.GetComponent<ParticleSystem>();
+                ParticleSystem.MainModule psmain = ps.main;
+                psmain.startSize = forceCharge / 50;
+            }
+
         }
     }
 
     void throwProjectile()
     {
-        projectileObj.GetComponent<Rigidbody>().velocity = (destination - firePoint.position).normalized * projectileSpeed;
-        projectileObj.GetComponent<ProjectileTuT>().force = forceCharge;
+        if (projectileObj) // se collide mentre l'abbiamo ancora in mano (magari siamo troppo vicino ad un nemico)
+        {
+            projectileObj.GetComponent<Rigidbody>().velocity = (destination - firePoint.position).normalized * projectileSpeed;
+            projectileObj.GetComponent<ProjectileTuT>().force = forceCharge;
 
-        iTween.PunchPosition(projectileObj, new Vector3(Random.Range(-arcRange, arcRange), Random.Range(-arcRange, arcRange), 0), Random.Range(0.5f, 2f));
-        Destroy(projectileObj, 5);
+            iTween.PunchPosition(projectileObj, new Vector3(Random.Range(-arcRange, arcRange), Random.Range(-arcRange, arcRange), 0), Random.Range(0.5f, 2f));
+            Destroy(projectileObj, 5);
+        }
 
     }
-
-    //void InstantiateProjectile()
-    //{
-    //    projectileObj = Instantiate(projectile, firePoint.position + new Vector3(0f, 0f, 0.5f), Quaternion.identity) as GameObject;
-    //    projectileObj.GetComponent<Rigidbody>().velocity = (destination - firePoint.position).normalized * projectileSpeed;
-
-    //    iTween.PunchPosition(projectileObj, new Vector3(Random.Range(-arcRange, arcRange), Random.Range(-arcRange, arcRange), 0), Random.Range(0.5f, 2f));
-    //}
 }
