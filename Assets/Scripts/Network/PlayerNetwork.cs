@@ -12,7 +12,7 @@ public class PlayerNetwork : Photon.MonoBehaviour
         if (photonView.isMine)
         {
             GetComponent<PlayerMovements>().enabled = true;
-            GetComponent<MagicianShoot>().enabled = true;//TODO: bisogna attivare solo lo script dedicato ogni player
+            GetComponent<ArcheryShoot>().enabled = true;//TODO: bisogna attivare solo lo script dedicato ogni player
             gameObject.AddComponent<HeroHealth>().setHealthBar(GameObject.Find("HealthBar").GetComponent<HealthBar>());
         }
         else Destroy(cam); //se non sono io distruggo direttamente l'oggetto cam
