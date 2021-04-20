@@ -7,8 +7,11 @@ public class ChoseRoom : MonoBehaviour
 {
 
     
-    public void StarGame()
+    public void JoinRoomAndStart()
     {
+        string rn = RoomListingPref.roomName;
+        Debug.Log(rn);
+        PhotonNetwork.JoinRoom(rn);//TODO:controllare che non ci siano gia' 3 giocatori
         SceneManager.LoadScene("GameScene");
 
     }

@@ -60,7 +60,7 @@ public class RoomListings : Photon.PunBehaviour
             else//stanza aggiunta
             {
                 RoomListingPref listing = (RoomListingPref)Instantiate(roomListing, content);
-                if (listing != null)
+                if (listing != null && info.PlayerCount<3)
                 {
                     listing.SetRoomInfo(info);
                 }
