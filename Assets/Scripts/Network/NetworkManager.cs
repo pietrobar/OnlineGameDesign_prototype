@@ -7,12 +7,12 @@ public class NetworkManager : Photon.MonoBehaviour
     public Transform spawnPoint;
     private RoomInfo[] rooms;
     // Start is called before the first frame update
-    void Start()
+    /*void Start()
     {
         PhotonNetwork.autoJoinLobby = true;
         PhotonNetwork.ConnectUsingSettings("1");
     }
-
+*/
     private void OnGUI()
     {
         GUI.Label(new Rect(10, 10, 100, 100), PhotonNetwork.connectionStateDetailed.ToString());
