@@ -24,6 +24,7 @@ public class ChoseCharacter : MonoBehaviour
         //fa ricomparire solo quello giusto
         this.characterIndex = (this.characterIndex+1)%3;
         characters[this.characterIndex].SetActive(true);
+        Debug.Log(characterIndex + " " + characters[characterIndex].name);
         PlayerPrefs.SetInt("CharacterIndex", characterIndex);
     }
 

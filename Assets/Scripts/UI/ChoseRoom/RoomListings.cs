@@ -28,7 +28,7 @@ public class RoomListings : Photon.PunBehaviour
 
     public void CreateRoomFromInput()
     {
-        PhotonNetwork.CreateRoom(roomNameInput.text, new RoomOptions() { maxPlayers=3, IsVisible=true}, null);
+        PhotonNetwork.CreateRoom(roomNameInput.text, new RoomOptions() { MaxPlayers=3, IsVisible=true}, null);
         StartGame();
     }
     public void StartGame()

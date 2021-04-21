@@ -21,7 +21,8 @@ public class RoomListingPref : MonoBehaviour
 
     public void OnRoomClick()
     {
-        GameObject.Find("SelectedLobbyBtn").SetActive(true);
+        GameObject.Find("SelectedLobbyBtn").GetComponent<Button>().interactable = true;
+        //TODO: conviene cambiare il colore del bottone disabilitato, di default sembra pressed
         roomName = _roomInfo.Name;
         Debug.Log(roomName);
 
