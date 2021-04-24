@@ -7392,7 +7392,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1465800066}
   - component: {fileID: 1465800065}
-  - component: {fileID: 1465800067}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -7413,11 +7412,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterPrefab:
-  - {fileID: 2988778289439116643, guid: 557b66d44a9d8b64ca089e15dcd69299, type: 3}
-  - {fileID: 2988778289439116643, guid: 302b7431e37b2d84882c8a0a274dc594, type: 3}
+  - {fileID: 6457527765440999550, guid: 422398e07a285e642ba6c950f3a7b303, type: 3}
+  - {fileID: 4372673981705240167, guid: 31f427191afb42645a802c9f06b82619, type: 3}
   - {fileID: 2988778289439116643, guid: 2eb18795f64e59a439ba0178c0db9203, type: 3}
   panelSetting: {fileID: 6907597877784849947}
   panelPlay: {fileID: 6907597877568223002}
+  spawnPoint: {fileID: 1713242502}
 --- !u!4 &1465800066
 Transform:
   m_ObjectHideFlags: 0
@@ -7432,19 +7432,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1465800067
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1465800064}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8527f2065de34804798e9769edc00a09, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnPoint: {fileID: 1713242502}
 --- !u!1001 &1480173540
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8523,7 +8510,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1713242502}
   m_Layer: 0
-  m_Name: SpownPoint1
+  m_Name: SpawnPoint1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10652,7 +10639,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5644b53bdce2439cb09b84a5a8f2318, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
 --- !u!114 &467352572198608160
 MonoBehaviour:
   m_ObjectHideFlags: 0

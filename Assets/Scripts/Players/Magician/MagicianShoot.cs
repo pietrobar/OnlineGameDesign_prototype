@@ -62,7 +62,7 @@ public class MagicianShoot : MonoBehaviour
     {
         if (forceCharge == 1)
         {
-            projectileObj = Instantiate(projectile, firePoint.position, transform.rotation * Quaternion.AngleAxis(90, Vector3.up)) as GameObject;
+            projectileObj = Instantiate(projectile, firePoint.position, transform.rotation) as GameObject;
             projectileObj.transform.SetParent(player.transform);
         }
         else

@@ -23,6 +23,10 @@ public class PlayerMovements : MonoBehaviour
         animator = GetComponent<Animator>();
         rigidBody = GetComponent<Rigidbody>();
         trans = GetComponent<Transform>();
+
+        //blocco il mouse
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
    
 

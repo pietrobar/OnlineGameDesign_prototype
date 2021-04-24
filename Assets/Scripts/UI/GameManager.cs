@@ -12,13 +12,25 @@ public class GameManager : MonoBehaviour
     public GameObject panelPlay;
 
     private GameObject _player;
-    
-    void Start()
+
+    public Transform spawnPoint;
+
+    private void OnGUI()
     {
-        LoadCharacter();
+        GUI.Label(new Rect(10, 10, 100, 100), PhotonNetwork.connectionStateDetailed.ToString());
     }
 
-    
+   
+
+
+    void OnJoinedRoom()
+    {
+        //instanzio il giocatore
+        int characterIndex = PlayerPrefs.GetInt("CharacterIndex");
+        PhotonNetwork.Instantiate(characterPrefab[characterIndex].name, spawnPoint.position, spawnPoint.rotation, 0);
+    }
+
+
     void Update()
     {
         if (panelSetting == true)
@@ -31,17 +43,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void LoadCharacter()
-    {
-        int characterIndex = PlayerPrefs.GetInt("CharacterIndex");
-        //_player = Instantiate(characterPrefab[characterIndex]);
-    }
+ 
 
     public void ButtonSetting()//rotella
     {
         panelSetting.SetActive(true);
-        /*panelSetting.transform.GetChild(1).GetChild(0).GetChild(1).GetComponent<CountThings>().AddCount();
-        Newspaper.newspaperCount;*/
 
     }
 
@@ -55,6 +61,8 @@ public class GameManager : MonoBehaviour
         Destroy(_player);
         panelSetting.SetActive(false);
         panelPlay.SetActive(false);
-        //TODO: si deve uscire dal gioco come in john lemon
+        Application.Quit();
     }
+
+    
 }

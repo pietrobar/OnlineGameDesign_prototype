@@ -8,7 +8,9 @@ public class ChoseCharacter : MonoBehaviour
     [SerializeField]
     private GameObject[] characters;
     public GameObject optionsPanel;
+    public GameObject choseRoomPanel;
 
+    
     
     private int characterIndex=0;
 
@@ -22,13 +24,23 @@ public class ChoseCharacter : MonoBehaviour
         //fa ricomparire solo quello giusto
         this.characterIndex = (this.characterIndex+1)%3;
         characters[this.characterIndex].SetActive(true);
+        Debug.Log(characterIndex + " " + characters[characterIndex].name);
+        PlayerPrefs.SetInt("CharacterIndex", characterIndex);
     }
+
+    public void FromChoseCaracterPanelToRoomChosingPanel()
+    {
+        //choseCharacterPanel.SetActive(false);
+        this.gameObject.SetActive(false);//funziona al posto della riga precedente?
+        choseRoomPanel.SetActive(true);
+
+    }
+
 
     public void StarGame()
     {
         SceneManager.LoadScene("GameScene");
-
-        PlayerPrefs.SetInt("CharacterIndex", characterIndex);
+  
     }
 
     public void options()

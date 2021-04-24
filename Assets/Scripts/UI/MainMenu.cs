@@ -15,8 +15,7 @@ public class MainMenu : MonoBehaviour
 
     public void QuitButton()
     {
-        //TODO: si deve uscire dall'applicazione
-        Debug.Log("Quit");
+        Application.Quit();
     }
 
 }
