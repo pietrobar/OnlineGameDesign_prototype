@@ -23,7 +23,11 @@ public class CameraCollision : MonoBehaviour
         RaycastHit hit;
         if(Physics.Linecast (transform.parent.position, desiredCameraPosition,out hit))
         {
-            distance = Mathf.Clamp(hit.distance * .8f, minDistance, maxDistance);
+            if (hit.collider.gameObject.tag != "DontCollideCamera")
+            {
+                distance = Mathf.Clamp(hit.distance * .8f, minDistance, maxDistance);
+            }
+            
         }
         else
         {
@@ -31,4 +35,5 @@ public class CameraCollision : MonoBehaviour
         }
         transform.localPosition = Vector3.Lerp(transform.localPosition, playerDir * distance, Time.deltaTime );
     }
+
 }

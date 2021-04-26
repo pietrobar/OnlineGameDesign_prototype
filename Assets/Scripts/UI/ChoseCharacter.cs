@@ -12,7 +12,7 @@ public class ChoseCharacter : MonoBehaviour
 
     
     
-    private int characterIndex=0;
+    private int characterIndex=-1;
 
 
     public void changeCharacter()
