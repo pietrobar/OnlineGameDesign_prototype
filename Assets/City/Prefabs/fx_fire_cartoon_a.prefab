@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 494409329}
   m_Layer: 0
   m_Name: fx_fire_cartoon_a
-  m_TagString: Untagged
+  m_TagString: DontCollideCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
