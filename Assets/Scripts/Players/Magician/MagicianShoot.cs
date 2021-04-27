@@ -25,16 +25,19 @@ public class MagicianShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButton("Fire1"))
+        if (GameManager.inGame)
         {
-            fire1Pressed = true;
-        }
-        else if (Input.GetButtonUp("Fire1"))
-        {
-            fire1Pressed = false;
-            ShootProjectile();
-            forceCharge = 0;
-        }
+            if (Input.GetButton("Fire1"))
+            {
+                fire1Pressed = true;
+            }
+            else if (Input.GetButtonUp("Fire1"))
+            {
+                fire1Pressed = false;
+                ShootProjectile();
+                forceCharge = 0;
+            }
+        } 
     }
 
     private void FixedUpdate()

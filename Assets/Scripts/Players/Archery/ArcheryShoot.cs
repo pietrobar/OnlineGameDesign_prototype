@@ -27,15 +27,18 @@ public class ArcheryShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButton("Fire1"))
+        if (GameManager.inGame)
         {
-            fire1Pressed = true;
-        }
-        else if (Input.GetButtonUp("Fire1"))
-        {
-            fire1Pressed = false;
-            ShootProjectile();
-            forceCharge = 1;
+            if (Input.GetButton("Fire1"))
+            {
+                fire1Pressed = true;
+            }
+            else if (Input.GetButtonUp("Fire1"))
+            {
+                fire1Pressed = false;
+                ShootProjectile();
+                forceCharge = 1;
+            }
         }
     }
 
@@ -80,10 +83,12 @@ public class ArcheryShoot : MonoBehaviour
     void throwProjectile()
     {
         animator.SetBool("carica", false);
-
-        projectileObj.transform.parent = null;
-        projectileObj.AddComponent<Rigidbody>();
-        projectileObj.GetComponent<Rigidbody>().velocity = (destination - firePoint.position).normalized * forceCharge/2;
-        projectileObj.GetComponent<BowTut>().force = forceCharge;
+        if (projectileObj)
+        {
+            projectileObj.transform.parent = null;
+            projectileObj.AddComponent<Rigidbody>();
+            projectileObj.GetComponent<Rigidbody>().velocity = (destination - firePoint.position).normalized * forceCharge / 2;
+            projectileObj.GetComponent<BowTut>().force = forceCharge;
+        }
     }
 }

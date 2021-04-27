@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
 
     public Transform spawnPoint;
 
+    public static bool inGame=true;
+
     private void OnGUI()
     {
         GUI.Label(new Rect(10, 10, 100, 100), PhotonNetwork.connectionStateDetailed.ToString());
@@ -33,6 +35,15 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+
+        //voglio controllare se il giocatore preme Esc e in caso disabilitare il controllo del gioco
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            inGame = false;
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            //se chiamo buttonsetting qui non funziona, quindi non lo faccio
+        }
         if (panelSetting == true)
         {
             if (Input.GetKeyDown(KeyCode.Escape))
@@ -54,6 +65,9 @@ public class GameManager : MonoBehaviour
     public void ButtonExit()
     {
         panelSetting.SetActive(false);
+        inGame = true;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void ButtonQuit()

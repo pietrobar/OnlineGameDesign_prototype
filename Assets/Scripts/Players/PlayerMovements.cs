@@ -33,26 +33,27 @@ public class PlayerMovements : MonoBehaviour
     private void LookAtMouse()//il giocatore segue il mouse ruotando lungo l'asse y, la camera lo segue perche' e' suo figlio nella gerarchia
     {
         visualRotationAngle += Input.GetAxis("Mouse X") * visualRotationSpeed * Time.deltaTime;
-        trans.localRotation = Quaternion.AngleAxis(visualRotationAngle, Vector3.up);//ruota solo lungo y
-
+        trans.localRotation = Quaternion.AngleAxis(visualRotationAngle, Vector3.up);//ruota solo lungo y  
     }
 
     void Update()//To make sure the movement vector and rotation are set in time with OnAnimatorMove, change your Update method to a FixedUpdate
     {
-        LookAtMouse();
-        float vertical = Input.GetAxis("Vertical");//prendo l'input verticale (W e S)
+        if (GameManager.inGame)//sto controllando il gioco
+        {
+            LookAtMouse();
+            float vertical = Input.GetAxis("Vertical");//prendo l'input verticale (W e S)
 
-        movement = trans.forward* vertical;
+            movement = trans.forward * vertical;
 
-        bool running = !Mathf.Approximately(vertical, 0f);//guarda se i parametri passati sono approssimativamente uguali, se lo sono vuol dire che non si sta muovendo lungo l'asse
+            bool running = !Mathf.Approximately(vertical, 0f);//guarda se i parametri passati sono approssimativamente uguali, se lo sono vuol dire che non si sta muovendo lungo l'asse
 
-        //Animazioni comuni a tutti i player
-        animator.SetBool("Running", running);//attivo l'animazione
+            //Animazioni comuni a tutti i player
+            animator.SetBool("Running", running);//attivo l'animazione
 
-        animator.SetBool("Jumping", Input.GetKeyDown(KeyCode.Space));
+            animator.SetBool("Jumping", Input.GetKeyDown(KeyCode.Space));
 
-        animator.SetBool("FastRunning", Input.GetKey(KeyCode.LeftShift));
-
+            animator.SetBool("FastRunning", Input.GetKey(KeyCode.LeftShift));
+        }
     }
 
     //OnAnimatorMove is actually going to be called in time with physics, and not with rendering like your Update method
