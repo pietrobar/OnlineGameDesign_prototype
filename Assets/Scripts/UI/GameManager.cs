@@ -39,19 +39,12 @@ public class GameManager : MonoBehaviour
         //voglio controllare se il giocatore preme Esc e in caso disabilitare il controllo del gioco
         if (Input.GetKey(KeyCode.Escape))
         {
-            inGame = false;
+            inGame = false;//la variabile inGame e' usata negli script dei giocatori per non permettere movimenti
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
-            //se chiamo buttonsetting qui non funziona, quindi non lo faccio
+            ButtonSetting();
         }
-        if (panelSetting == true)
-        {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                panelSetting.SetActive(false);
-            }
-
-        }
+        
     }
 
  
@@ -65,6 +58,7 @@ public class GameManager : MonoBehaviour
     public void ButtonExit()
     {
         panelSetting.SetActive(false);
+        //devo ritornare in game:
         inGame = true;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
