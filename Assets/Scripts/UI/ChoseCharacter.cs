@@ -12,19 +12,20 @@ public class ChoseCharacter : MonoBehaviour
 
     
     
-    private int characterIndex=-1;
+    private int characterIndex=0;//per fare in modo che il primo character selezionato sia quello in posizione 0 lo metto di default nello start
 
 
     public void changeCharacter()
     {
+        
         for(int i = 0; i < characters.Length; i++)//fa scomparire tutti i character
         {
             characters[i].SetActive(false);
         }
         //fa ricomparire solo quello giusto
         this.characterIndex = (this.characterIndex+1)%3;
-        characters[this.characterIndex].SetActive(true);
-        Debug.Log(characterIndex + " " + characters[characterIndex].name);
+        characters[this.characterIndex].SetActive(true);//rendo visibile solo quello giusto
+
         PlayerPrefs.SetInt("CharacterIndex", characterIndex);
     }
 
@@ -35,12 +36,15 @@ public class ChoseCharacter : MonoBehaviour
         choseRoomPanel.SetActive(true);
 
     }
+    private void Start()
+    {
+        PlayerPrefs.SetInt("CharacterIndex", characterIndex);//di default e' 0, se faccio change character lo cambio
 
+    }
 
     public void StarGame()
     {
         SceneManager.LoadScene("GameScene");
-  
     }
 
     public void options()
