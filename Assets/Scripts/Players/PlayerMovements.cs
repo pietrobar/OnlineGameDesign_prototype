@@ -54,6 +54,11 @@ public class PlayerMovements : MonoBehaviour
 
             animator.SetBool("FastRunning", Input.GetKey(KeyCode.LeftShift));
         }
+        else//se faccio esc devono finire i movimenti
+        {
+            animator.SetBool("Running", false);
+            animator.SetBool("FastRunning", false);
+        }
     }
 
     //OnAnimatorMove is actually going to be called in time with physics, and not with rendering like your Update method
