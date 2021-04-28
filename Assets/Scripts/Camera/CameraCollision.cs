@@ -23,7 +23,7 @@ public class CameraCollision : MonoBehaviour
         RaycastHit hit;
         if(Physics.Linecast (transform.parent.position, desiredCameraPosition,out hit))
         {
-            if (hit.collider.gameObject.tag != "DontCollideCamera")
+            if (hit.collider.gameObject.tag=="CollideCamera")
             {
                 distance = Mathf.Clamp(hit.distance * .8f, minDistance, maxDistance);
             }
