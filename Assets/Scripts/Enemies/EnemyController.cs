@@ -45,9 +45,16 @@ public class EnemyController : MonoBehaviour
                         animator.SetTrigger("attack");
                         FaceTarget();
                     }
-                }else if (animator.GetCurrentAnimatorStateInfo(0).IsName("GetHit"))
+                    else if (distance > agent.stoppingDistance)//se mi riallontano riprende a camminare
+                    {
+                        animator.SetBool("walk", true);
+
+                    }
+
+                }
+                else if (animator.GetCurrentAnimatorStateInfo(0).IsName("GetHit"))
                 {
-                    agent.isStopped = true;
+                    agent.isStopped = true;//fermo l'agente se e' stato colpito per fare l'animazione gethit
                     
                 }
             }
