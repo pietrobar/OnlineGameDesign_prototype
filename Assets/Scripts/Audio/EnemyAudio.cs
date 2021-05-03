@@ -14,9 +14,12 @@ public class EnemyAudio : MonoBehaviour
 
     private void Update()
     {
-        if (anim.GetBool("walk") && !footSteps.isPlaying)
+        if (anim.GetBool("walk") && !footSteps.isPlaying && !anim.GetCurrentAnimatorStateInfo(0).IsName("GetHit") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Die"))
         {
             footSteps.Play();
+        }else if (anim.GetCurrentAnimatorStateInfo(0).IsName("GetHit") || anim.GetCurrentAnimatorStateInfo(0).IsName("Die"))
+        {
+            footSteps.Stop();
         }
     }
 }
