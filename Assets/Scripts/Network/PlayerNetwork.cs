@@ -20,7 +20,8 @@ public class PlayerNetwork : Photon.MonoBehaviour
                 GetComponent<ArcheryShoot>().enabled = true;
             if (playerType.Contains("Swordman"))
                 GetComponent<SwordmanMovements>().enabled = true;
-
+            GetComponent<PlayerAudio>().enabled = true;
+            GetComponent<AudioSource>().enabled = true;//rumore dei passi
             gameObject.AddComponent<HeroHealth>().setHealthBar(GameObject.Find("HealthBar").GetComponent<HealthBar>());
         }
         else Destroy(cam); //se non sono io distruggo direttamente l'oggetto cam
