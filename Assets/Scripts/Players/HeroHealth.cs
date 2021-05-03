@@ -41,4 +41,8 @@ public class HeroHealth : MonoBehaviour
     {
         this.healthBar = healthBar;
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.gameObject.name == "Index_Proximal_L") TakeDamage(1f);
+    }
 }

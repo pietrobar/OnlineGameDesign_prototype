@@ -17,6 +17,24 @@ public class GameManager : MonoBehaviour
 
     public static bool inGame=true;
 
+    private GameObject[] instantiatedPlayers = new GameObject[3];
+
+
+    
+    public static GameManager instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
+    
+
+    public GameObject[] GetInstantiatedPlayers()
+    {
+        return instantiatedPlayers;
+    }
+
     private void OnGUI()
     {
         GUI.Label(new Rect(10, 10, 100, 100), PhotonNetwork.connectionStateDetailed.ToString());
@@ -29,7 +47,7 @@ public class GameManager : MonoBehaviour
     {
         //instanzio il giocatore
         int characterIndex = PlayerPrefs.GetInt("CharacterIndex");
-        PhotonNetwork.Instantiate(characterPrefab[characterIndex].name, spawnPoint.position, spawnPoint.rotation, 0);
+        instantiatedPlayers[characterIndex]=PhotonNetwork.Instantiate(characterPrefab[characterIndex].name, spawnPoint.position, spawnPoint.rotation, 0);
     }
 
 
