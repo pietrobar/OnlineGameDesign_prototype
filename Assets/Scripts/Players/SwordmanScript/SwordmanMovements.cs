@@ -7,12 +7,16 @@ public class SwordmanMovements : MonoBehaviour
     Animator animator;
     Rigidbody rigidBody;
     PlayerMovements scriptMovements;
+
+    public GameObject sword;
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
         rigidBody = GetComponent<Rigidbody>();
         scriptMovements = GetComponent<PlayerMovements>();
+
+        sword.GetComponent<SwordmanDamage>().setAnimator(animator);
     }
 
     void Update()
