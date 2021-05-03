@@ -52,7 +52,7 @@ public class EnemyController : MonoBehaviour
                     }
 
                 }
-                else if (animator.GetCurrentAnimatorStateInfo(0).IsName("GetHit"))
+                else if (animator.GetCurrentAnimatorStateInfo(0).IsName("GetHit") || animator.GetCurrentAnimatorStateInfo(0).IsName("Die"))
                 {
                     agent.isStopped = true;//fermo l'agente se e' stato colpito per fare l'animazione gethit
                     
