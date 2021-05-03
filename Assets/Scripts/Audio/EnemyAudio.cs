@@ -6,6 +6,8 @@ public class EnemyAudio : MonoBehaviour
 {
     Animator anim;
     public AudioSource footSteps;
+    public AudioSource mussu;
+
 
     private void Start()
     {
@@ -14,12 +16,17 @@ public class EnemyAudio : MonoBehaviour
 
     private void Update()
     {
+        
         if (anim.GetBool("walk") && !footSteps.isPlaying && !anim.GetCurrentAnimatorStateInfo(0).IsName("GetHit") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Die"))
         {
             footSteps.Play();
-        }else if (anim.GetCurrentAnimatorStateInfo(0).IsName("GetHit") || anim.GetCurrentAnimatorStateInfo(0).IsName("Die"))
+            
+        }
+        else if (anim.GetCurrentAnimatorStateInfo(0).IsName("GetHit") || anim.GetCurrentAnimatorStateInfo(0).IsName("Die"))
         {
             footSteps.Stop();
+            mussu.Play();
+            
         }
     }
 }
