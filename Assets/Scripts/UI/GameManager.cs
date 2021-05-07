@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        inGame = true;
         instance = this;
     }
 
@@ -87,7 +88,9 @@ public class GameManager : MonoBehaviour
         Destroy(_player);
         panelSetting.SetActive(false);
         panelPlay.SetActive(false);
-        Application.Quit();
+        PhotonNetwork.Disconnect();
+        SceneManager.LoadScene("CharacterSelect");
+        //Application.Quit(); non deve uscire dal gioco
     }
 
     
