@@ -9,6 +9,8 @@ public class HeroHealth : MonoBehaviour
 
     public HealthBar healthBar;
 
+    private float increaseHealtXP;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,8 +29,17 @@ public class HeroHealth : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        currentHealth -= damage;
-        healthBar.SetHealth(currentHealth);
+        
+        if(PanelEXP.valueHealth != 0)
+        {
+            currentHealth -= damage / PanelEXP.valueHealth;
+            healthBar.SetHealth(currentHealth);
+        }
+        else
+        {
+            currentHealth -= damage;
+            healthBar.SetHealth(currentHealth);
+        }
     }
 
     public void GiveLife(float life)
@@ -40,5 +51,10 @@ public class HeroHealth : MonoBehaviour
     public void setHealthBar(HealthBar healthBar)
     {
         this.healthBar = healthBar;
+    }
+
+    public float GetHealtValueXP()
+    {
+        return increaseHealtXP = GetComponent<GameManager>().GetHealtBarValue();
     }
 }

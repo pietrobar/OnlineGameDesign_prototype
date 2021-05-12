@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class GameManager : MonoBehaviour
     private GameObject _player;
 
     public Transform spawnPoint;
+
 
     private void OnGUI()
     {
@@ -48,7 +50,6 @@ public class GameManager : MonoBehaviour
     public void ButtonSetting()//rotella
     {
         panelSetting.SetActive(true);
-
     }
 
     public void ButtonExit()
@@ -64,5 +65,39 @@ public class GameManager : MonoBehaviour
         Application.Quit();
     }
 
-    
+    public float GetAttackBarValue()
+    {
+        if (panelSetting)
+        {
+            return GameObject.Find("Attack Bar").GetComponent<Slider>().value;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
+    public float GetHealtBarValue()
+    {
+        if (panelSetting)
+        {
+            return GameObject.Find("Healt Bar").GetComponent<Slider>().value;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
+    public float GetSpeedBarValue()
+    {
+        if (panelSetting)
+        {
+            return GameObject.Find("Speed Bar").GetComponent<Slider>().value;
+        }
+        else
+        {
+            return 0;
+        }
+    }
 }

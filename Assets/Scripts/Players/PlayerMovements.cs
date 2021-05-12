@@ -25,8 +25,8 @@ public class PlayerMovements : MonoBehaviour
         trans = GetComponent<Transform>();
 
         //blocco il mouse
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked;
     }
    
 
@@ -61,7 +61,7 @@ public class PlayerMovements : MonoBehaviour
         if (animator)//controllo che l'animator non sia null
         {
             if (Input.GetKey(KeyCode.LeftShift))
-                rigidBody.MovePosition(rigidBody.position + movement * fastRunCoeff);//applico il movimento con velocita' maggiore
+                rigidBody.MovePosition(rigidBody.position + movement * (fastRunCoeff + (PanelEXP.valueSpeed/5)));//applico il movimento con velocita' maggiore
             else
                 rigidBody.MovePosition(rigidBody.position + movement * animator.deltaPosition.magnitude);//applico il movimento
 

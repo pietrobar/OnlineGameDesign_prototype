@@ -16,7 +16,7 @@ public class BowTut : MonoBehaviour
             transform.parent = collision.transform; // doesn't move yet, but will move w/what it hit
 
             if(collision.gameObject.tag == "Enemy")
-                collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(1f);
+                collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(1f+(PanelEXP.valueAttack/50));
 
             Destroy(gameObject,5);
         }
