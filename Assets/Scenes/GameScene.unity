@@ -8056,6 +8056,8 @@ MonoBehaviour:
   - {fileID: 2988778289439116643, guid: 2eb18795f64e59a439ba0178c0db9203, type: 3}
   panelSetting: {fileID: 6907597877784849947}
   panelPlay: {fileID: 6907597877568223002}
+  diePanel: {fileID: 1585334731}
+  respawnCounter: {fileID: 840652937}
   spawnPoint: {fileID: 1713242502}
 --- !u!4 &1465800066
 Transform:
@@ -8819,7 +8821,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1585334732
 RectTransform:
   m_ObjectHideFlags: 0

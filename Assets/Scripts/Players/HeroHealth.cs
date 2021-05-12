@@ -19,9 +19,9 @@ public class HeroHealth : MonoBehaviour
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
-        diePanel = GameObject.Find("/Canvas/DiePanel");
-        respawnText = GameObject.Find("/Canvas/DiePanel/RespawnCount").GetComponent<Text>();
-        diePanel.SetActive(false);
+        diePanel = GameManager.instance.diePanel;
+        respawnText = GameManager.instance.respawnCounter;
+    
         animator = GetComponent<Animator>();
     }
 
