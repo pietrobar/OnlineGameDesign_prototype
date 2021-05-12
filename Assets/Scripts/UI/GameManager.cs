@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject panelSetting;
     public GameObject panelPlay;
+    public GameObject diePanel;
+    public Text respawnCounter;
 
     private GameObject _player;
 
