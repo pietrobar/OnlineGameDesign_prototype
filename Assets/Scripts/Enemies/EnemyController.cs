@@ -24,12 +24,35 @@ public class EnemyController : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
+    private Transform Nearest(GameObject[] players)
+    {
+        float minDistance = float.MaxValue;
+        GameObject nearestPlayer=null;
+        foreach (GameObject p in players)
+        {
+            
+            if (p)
+            {
+                float dist = Vector3.Distance(p.transform.position, transform.position);
+                if (dist < minDistance)
+                {
+                    minDistance = dist;
+                    nearestPlayer = p;
+                }
+            }
+            
+        }
+
+        return nearestPlayer.transform;
+    }
+
     // Update is called once per frame
     void Update()
     {
         if (targetPlayers[0])
         {
             target = targetPlayers[0].transform;//TODO: si deve scegliere un personaggio random, o meglio ancora, quello piu' vicino
+            //target = Nearest(targetPlayers);
             if (target)
             {
                 float distance = Vector3.Distance(target.position, transform.position);
