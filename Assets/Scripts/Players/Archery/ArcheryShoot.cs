@@ -81,7 +81,6 @@ public class ArcheryShoot : Photon.MonoBehaviour
     [PunRPC]
     void InstantiateRPC()
     {
-        Debug.Log(transform.position + "AAAAAA" + transform.rotation);
         projectileObj = Instantiate(projectile, firePoint.position, transform.rotation * Quaternion.AngleAxis(90, Vector3.up)) as GameObject;
 
         Physics.IgnoreCollision(projectileObj.GetComponent<MeshCollider>(), transform.root.GetComponent<CapsuleCollider>());
@@ -91,17 +90,18 @@ public class ArcheryShoot : Photon.MonoBehaviour
     void throwProjectile()
     {
         animator.SetBool("carica", false);
-        photonView.RPC("ThrowProjectileRPC", PhotonTargets.All, forceCharge);
+        object[] ps = { destination, forceCharge };
+        photonView.RPC("ThrowProjectileRPC", PhotonTargets.All, ps);
     }
 
     [PunRPC]
-    void ThrowProjectileRPC(int param) 
+    void ThrowProjectileRPC(Vector3 dest,int param) 
     {
         if (projectileObj)
         {
             projectileObj.transform.parent = null;
             projectileObj.AddComponent<Rigidbody>();
-            projectileObj.GetComponent<Rigidbody>().velocity = (destination - firePoint.position).normalized * param / 2;
+            projectileObj.GetComponent<Rigidbody>().velocity = (dest - firePoint.position).normalized * param / 2;
             projectileObj.GetComponent<BowTut>().force = param;
         }
     }

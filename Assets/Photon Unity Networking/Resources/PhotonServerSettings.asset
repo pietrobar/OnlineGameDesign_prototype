@@ -47,4 +47,5 @@ MonoBehaviour:
   - throwProjectile
   - InstantiateRPC
   - ThrowProjectileRPC
+  - TakeDamageRPC
   DisableAutoOpenWizard: 1
