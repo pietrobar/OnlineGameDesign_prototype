@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyHealth : MonoBehaviour
+public class EnemyHealth : Photon.MonoBehaviour
 {
     public float maxHealth = 4f;
     public float currentHealth;
@@ -19,6 +19,7 @@ public class EnemyHealth : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
+    
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;

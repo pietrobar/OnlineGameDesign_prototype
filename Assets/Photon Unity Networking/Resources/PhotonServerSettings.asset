@@ -43,4 +43,9 @@ MonoBehaviour:
   - RequestForPickupItems
   - RequestForPickupTimes
   - TaggedPlayer
+  - InstantiateAndGrow
+  - throwProjectile
+  - InstantiateRPC
+  - ThrowProjectileRPC
+  - TakeDamageRPC
   DisableAutoOpenWizard: 1
