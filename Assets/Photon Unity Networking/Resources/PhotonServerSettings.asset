@@ -48,4 +48,6 @@ MonoBehaviour:
   - InstantiateRPC
   - ThrowProjectileRPC
   - TakeDamageRPC
+  - InstantiateAndGrowRPC
+  - throwProjectileRPC
   DisableAutoOpenWizard: 1

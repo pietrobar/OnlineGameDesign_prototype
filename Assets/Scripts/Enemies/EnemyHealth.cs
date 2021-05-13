@@ -20,20 +20,23 @@ public class EnemyHealth : Photon.MonoBehaviour
     }
 
     
-    public void TakeDamage(float damage)
+    public void TakeDamage(string type,float damage)
     {
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
         if (currentHealth <= 0f)
-            SimpleDie();
+            SimpleDie(type);
         else
             animator.SetTrigger("getHit");
     }
 
-    private void SimpleDie()
+    private void SimpleDie(string type)
     {
         animator.SetTrigger("die");
-        CountXP.setXP(expGiven);
+        
+        
+        if(GameManager.instance._player.name==type)
+            CountXP.setXP(expGiven);
         Destroy(gameObject,2);
     }
 }
