@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject panelSetting;
     public GameObject panelPlay;
+    public GameObject diePanel;
+    public Text respawnCounter;
 
     private GameObject _player;
 
@@ -93,5 +96,39 @@ public class GameManager : MonoBehaviour
         //Application.Quit(); non deve uscire dal gioco
     }
 
-    
+    public float GetAttackBarValue()
+    {
+        if (panelSetting)
+        {
+            return GameObject.Find("Attack Bar").GetComponent<Slider>().value;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
+    public float GetHealtBarValue()
+    {
+        if (panelSetting)
+        {
+            return GameObject.Find("Healt Bar").GetComponent<Slider>().value;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
+    public float GetSpeedBarValue()
+    {
+        if (panelSetting)
+        {
+            return GameObject.Find("Speed Bar").GetComponent<Slider>().value;
+        }
+        else
+        {
+            return 0;
+        }
+    }
 }
