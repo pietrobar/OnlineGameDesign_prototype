@@ -13,6 +13,7 @@ public class HeroHealth : MonoBehaviour
     public int respawnSeconds = 10;
     private float timer = 0f;
     private Animator animator;
+    private float increaseHealtXP;
 
     // Start is called before the first frame update
     void Start()
@@ -40,8 +41,16 @@ public class HeroHealth : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        currentHealth -= damage;
-        healthBar.SetHealth(currentHealth);
+        if (PanelEXP.valueHealth != 0)
+        {
+            currentHealth -= damage / PanelEXP.valueHealth;
+            healthBar.SetHealth(currentHealth);
+        }
+        else
+        {
+            currentHealth -= damage;
+            healthBar.SetHealth(currentHealth);
+        }
     }
 
     public void GiveLife(float life)
@@ -89,5 +98,10 @@ public class HeroHealth : MonoBehaviour
     private void showSeconds(int seconds)
     {
         respawnText.text = "" +(respawnSeconds - seconds);
+    }
+
+    public float GetHealtValueXP()
+    {
+        return increaseHealtXP = GetComponent<GameManager>().GetHealtBarValue();
     }
 }

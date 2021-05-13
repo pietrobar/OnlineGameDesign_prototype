@@ -24,4 +24,9 @@ public class CountXP : MonoBehaviour
     {
         xp+=amount;
     }
+
+    public static int getXP()
+    {
+        return xp;
+    }
 }

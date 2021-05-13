@@ -16,7 +16,7 @@ public class ProjectileTuT : MonoBehaviour
 
             var impact = Instantiate(impactVFX, collision.contacts[0].point, Quaternion.identity) as GameObject;
             if (collision.gameObject.tag == "Enemy")
-                collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(force/100 + 0.1f);
+                collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(force/100 + 0.1f + (PanelEXP.valueAttack / 50));
 
 
             Destroy(impact, 2);

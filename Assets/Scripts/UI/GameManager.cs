@@ -93,5 +93,39 @@ public class GameManager : MonoBehaviour
         Application.Quit();
     }
 
-    
+    public float GetAttackBarValue()
+    {
+        if (panelSetting)
+        {
+            return GameObject.Find("Attack Bar").GetComponent<Slider>().value;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
+    public float GetHealtBarValue()
+    {
+        if (panelSetting)
+        {
+            return GameObject.Find("Healt Bar").GetComponent<Slider>().value;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
+    public float GetSpeedBarValue()
+    {
+        if (panelSetting)
+        {
+            return GameObject.Find("Speed Bar").GetComponent<Slider>().value;
+        }
+        else
+        {
+            return 0;
+        }
+    }
 }
