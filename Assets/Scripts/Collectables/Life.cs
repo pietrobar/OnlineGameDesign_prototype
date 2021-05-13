@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Life : MonoBehaviour
+public class Life : Photon.MonoBehaviour
 {
     public float speedRotation = 25f;
 
@@ -20,7 +20,7 @@ public class Life : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "Player" && photonView.isMine)
         {
             other.gameObject.GetComponent<HeroHealth>().GiveLife(1f);
             Destroy(gameObject);
