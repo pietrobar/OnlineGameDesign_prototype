@@ -50,4 +50,8 @@ MonoBehaviour:
   - TakeDamageRPC
   - InstantiateAndGrowRPC
   - throwProjectileRPC
+  - OnTriggerEnter
+  - SyncSwordHit
+  - SyncSwordHitRPC
+  - HitBySwordRPC
   DisableAutoOpenWizard: 1
