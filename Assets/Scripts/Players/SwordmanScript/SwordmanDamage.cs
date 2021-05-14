@@ -15,7 +15,7 @@ public class SwordmanDamage : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Enemy" && animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
+        if (other && other.tag == "Enemy" && animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
         {
             other.gameObject.GetComponent<EnemyHealth>().TakeDamage("Swordman",swordDamage);
         }

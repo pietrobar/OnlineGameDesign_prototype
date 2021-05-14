@@ -1583,25 +1583,25 @@ MonoBehaviour:
   ShowParameterInspector: 1
   m_SynchronizeParameters:
   - Type: 4
-    SynchronizeType: 2
+    SynchronizeType: 1
     Name: Running
   - Type: 4
-    SynchronizeType: 2
+    SynchronizeType: 1
     Name: Jumping
   - Type: 4
-    SynchronizeType: 2
+    SynchronizeType: 1
     Name: Block
   - Type: 4
-    SynchronizeType: 2
+    SynchronizeType: 1
     Name: FastRunning
   - Type: 9
     SynchronizeType: 2
     Name: Attack
   - Type: 9
-    SynchronizeType: 2
+    SynchronizeType: 1
     Name: AttackRunning
   m_SynchronizeLayers:
-  - SynchronizeType: 2
+  - SynchronizeType: 1
     LayerIndex: 0
 --- !u!114 &4736649591074884635
 MonoBehaviour:
