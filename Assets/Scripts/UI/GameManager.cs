@@ -90,7 +90,8 @@ public class GameManager : MonoBehaviour
         Destroy(_player);
         panelSetting.SetActive(false);
         panelPlay.SetActive(false);
-        Application.Quit();
+        //Application.Quit();
+        SceneManager.LoadScene(0,LoadSceneMode.Single);
     }
 
     public float GetAttackBarValue()

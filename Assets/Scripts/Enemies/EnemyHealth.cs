@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyHealth : MonoBehaviour
 {
+    public static int enemiesKill = 0;
     public float maxHealth = 4f;
     public float currentHealth;
     public int expGiven = 10;
+
+    public Text enimiesKill;
 
     public HealthBar healthBar;
     private Animator animator;
@@ -33,6 +37,7 @@ public class EnemyHealth : MonoBehaviour
     {
         animator.SetTrigger("die");
         CountXP.setXP(expGiven);
-        Destroy(gameObject,2);
+        enemiesKill++;
+        Destroy(gameObject,2); 
     }
 }
