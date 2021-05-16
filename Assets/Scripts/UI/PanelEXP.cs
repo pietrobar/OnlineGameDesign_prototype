@@ -37,10 +37,16 @@ public class PanelEXP : MonoBehaviour
     void Update()
     {
         TotEXP = CountXP.getXP();
-        bool availableXP = TotEXP >= xpunity;
-        AttackButton.interactable = availableXP;
-        HealtButton.interactable = availableXP;
-        SpeedButton.interactable = availableXP;
+        //bool availableXP = TotEXP >= xpunity;
+        bool availablexpAttack = TotEXP >= xpAttack;
+        bool availablexpSpeed = TotEXP >= xpSpeed;
+        bool availablexpHealth = TotEXP >= xpHealth;
+        AttackButton.interactable = availablexpAttack;
+        HealtButton.interactable = availablexpHealth;
+        SpeedButton.interactable = availablexpSpeed;
+        //AttackButton.interactable = availableXP;
+        //HealtButton.interactable = availableXP;
+        //SpeedButton.interactable = availableXP;
     }
 
     public void SetSlider(int n, Slider bar)
@@ -66,7 +72,7 @@ public class PanelEXP : MonoBehaviour
     {
         CountXP.setXP(-xpAttack);
         TotEXP = CountXP.getXP();
-        SetSlider(xpunity, attackBar);
+        SetSlider(xpAttack, attackBar);
         xpAttack += 3;
     }
 
@@ -74,7 +80,7 @@ public class PanelEXP : MonoBehaviour
     {
         CountXP.setXP(-xpHealth);
         TotEXP = CountXP.getXP();
-        SetSlider(xpunity, healtBar);
+        SetSlider(xpHealth, healtBar);
         xpHealth += 3;
     }
 
@@ -82,7 +88,7 @@ public class PanelEXP : MonoBehaviour
     {
         CountXP.setXP(-xpSpeed);
         TotEXP = CountXP.getXP();
-        SetSlider(xpunity, speedBar);
+        SetSlider(xpSpeed, speedBar);
         xpSpeed += 3;
     }
 

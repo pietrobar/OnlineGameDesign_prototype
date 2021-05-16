@@ -28,7 +28,7 @@ public class SwordmanDamage : MonoBehaviour
     {
         if (other.tag == "Enemy" && animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
         {
-            other.gameObject.GetComponent<EnemyHealth>().TakeDamage(swordDamage);
+            other.gameObject.GetComponent<EnemyHealth>().TakeDamage(swordDamage + (PanelEXP.valueAttack / 50));
         }
     }
 }
