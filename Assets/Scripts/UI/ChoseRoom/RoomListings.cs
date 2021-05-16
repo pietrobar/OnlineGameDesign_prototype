@@ -38,12 +38,7 @@ public class RoomListings : Photon.PunBehaviour
         SceneManager.LoadScene("GameScene");
     }
 
-    /*private void OnConnectedToMaster()
-    {
-        PhotonNetwork.JoinLobby();
-        Debug.Log("Connected");
-        
-    }*/
+   
     public override void OnReceivedRoomListUpdate()
     {
         foreach (RoomInfo info in PhotonNetwork.GetRoomList())
@@ -68,7 +63,7 @@ public class RoomListings : Photon.PunBehaviour
         }
     }
 
-    public void OnRoomListUpdate(List<RoomInfo> roomList)//questo non funziona
+    public void OnRoomListUpdate(List<RoomInfo> roomList)//questo non funziona (verificare prima di cancellare
     {//chiamato solo se sono in una lobby
         
         foreach (RoomInfo info in roomList)

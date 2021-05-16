@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EnemyHealth : MonoBehaviour
+public class EnemyHealth : Photon.MonoBehaviour
 {
     public static int enemiesKill = 0;
     public float maxHealth = 4f;
@@ -23,6 +23,7 @@ public class EnemyHealth : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
+    
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ArcheryShoot : MonoBehaviour
+public class ArcheryShoot : Photon.MonoBehaviour
 {
     [Range(50, 100)] public int chargeSpeed;
     Transform player;
@@ -49,8 +49,10 @@ public class ArcheryShoot : MonoBehaviour
             //forceCharge = (int)(forceCharge + Time.deltaTime * chargeSpeed);
             if(forceCharge<1000)forceCharge++;
             InstantiateAndGrow();
+            
         }
     }
+
 
     void ShootProjectile()
     {
@@ -61,6 +63,7 @@ public class ArcheryShoot : MonoBehaviour
         else
             destination = ray.GetPoint(1000);
         throwProjectile();
+        
     }
 
     void InstantiateAndGrow()
@@ -68,27 +71,38 @@ public class ArcheryShoot : MonoBehaviour
         if (!animator.GetBool("carica"))//il caricamento si fa solo la prima volta
         {
             animator.SetBool("carica", true);
-            projectileObj = Instantiate(projectile, firePoint.position , transform.rotation * Quaternion.AngleAxis(90, Vector3.up)) as GameObject;
-
-            Physics.IgnoreCollision(projectileObj.GetComponent<MeshCollider>(), transform.root.GetComponent<CapsuleCollider>());
-            projectileObj.transform.SetParent(firePoint.transform); // così da seguire il player
-
-        }
-        else
-        {
+            photonView.RPC("InstantiateRPC", PhotonTargets.All, null);
             
+
         }
+        
+    }
+
+    [PunRPC]
+    void InstantiateRPC()
+    {
+        projectileObj = Instantiate(projectile, firePoint.position, transform.rotation * Quaternion.AngleAxis(90, Vector3.up)) as GameObject;
+
+        Physics.IgnoreCollision(projectileObj.GetComponent<MeshCollider>(), transform.root.GetComponent<CapsuleCollider>());
+        projectileObj.transform.SetParent(firePoint.transform); // così da seguire il player
     }
 
     void throwProjectile()
     {
         animator.SetBool("carica", false);
+        object[] ps = { destination, forceCharge };
+        photonView.RPC("ThrowProjectileRPC", PhotonTargets.All, ps);
+    }
+
+    [PunRPC]
+    void ThrowProjectileRPC(Vector3 dest,int param) 
+    {
         if (projectileObj)
         {
             projectileObj.transform.parent = null;
             projectileObj.AddComponent<Rigidbody>();
-            projectileObj.GetComponent<Rigidbody>().velocity = (destination - firePoint.position).normalized * forceCharge / 2;
-            projectileObj.GetComponent<BowTut>().force = forceCharge;
+            projectileObj.GetComponent<Rigidbody>().velocity = (dest - firePoint.position).normalized * param / 2;
+            projectileObj.GetComponent<BowTut>().force = param;
         }
     }
 }
