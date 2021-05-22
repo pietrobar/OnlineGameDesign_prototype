@@ -22,7 +22,9 @@ public class Life : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            other.gameObject.GetComponent<HeroHealth>().GiveLife(1f);
+            HeroHealth hh = other.gameObject.GetComponent<HeroHealth>();
+            if(hh) 
+                hh.GiveLife(1f);
             Destroy(gameObject);
         }
     }

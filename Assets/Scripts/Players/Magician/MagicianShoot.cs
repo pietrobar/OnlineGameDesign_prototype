@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MagicianShoot : MonoBehaviour
+public class MagicianShoot :Photon. MonoBehaviour
 {
     Transform player;
     Vector3 destination;
@@ -63,10 +63,17 @@ public class MagicianShoot : MonoBehaviour
 
     void InstantiateAndGrow()
     {
+        //todo: si dovra' aggiungere l'animazione qui 
+        photonView.RPC("InstantiateAndGrowRPC", PhotonTargets.All, forceCharge);
+    }
+
+    [PunRPC]
+    void InstantiateAndGrowRPC(int forceCharge)
+    {
         if (forceCharge == 1)
         {
             projectileObj = Instantiate(projectile, firePoint.position, transform.rotation) as GameObject;
-            projectileObj.transform.SetParent(player.transform);
+            projectileObj.transform.SetParent(firePoint.transform);//per fare seguire il player mentre si muove
         }
         else
         {
@@ -85,9 +92,17 @@ public class MagicianShoot : MonoBehaviour
 
     void throwProjectile()
     {
+        //todo: si dovra' aggiungere l'animazione qui 
+        object[] ps = { destination, forceCharge };
+        photonView.RPC("ThrowProjectileRPC", PhotonTargets.All, ps);
+    }
+
+    [PunRPC]
+    void ThrowProjectileRPC(Vector3 dest, int forceCharge)
+    {
         if (projectileObj) // se collide mentre l'abbiamo ancora in mano (magari siamo troppo vicino ad un nemico)
         {
-            projectileObj.GetComponent<Rigidbody>().velocity = (destination - firePoint.position).normalized * projectileSpeed;
+            projectileObj.GetComponent<Rigidbody>().velocity = (dest - firePoint.position).normalized * projectileSpeed;
             projectileObj.GetComponent<ProjectileTuT>().force = forceCharge;
 
             iTween.PunchPosition(projectileObj, new Vector3(Random.Range(-arcRange, arcRange), Random.Range(-arcRange, arcRange), 0), Random.Range(0.5f, 2f));
