@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyHealth : Photon.MonoBehaviour
 {
+    public static int enemiesKill = 0;
     public float maxHealth = 4f;
     public float currentHealth;
     public int expGiven = 10;
+
+    public Text enimiesKill;
 
     public HealthBar healthBar;
     private Animator animator;
@@ -51,11 +55,10 @@ public class EnemyHealth : Photon.MonoBehaviour
 
     private void SimpleDie(string type)
     {
-        animator.SetTrigger("die");
-        
-        
+        animator.SetTrigger("die");  
         if(GameManager.instance._player.name==type)
             CountXP.setXP(expGiven);
         Destroy(gameObject,2);
+        enemiesKill++;
     }
 }
