@@ -65,7 +65,10 @@ public class HeroHealth : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.gameObject.name == "Index_Proximal_L") TakeDamage(1f);
+        if (collision.collider.gameObject.name == "Index_Proximal_L" && collision.collider.gameObject.transform.root.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Attack02"))//index proximal l e' il pugno sinistro del golem
+        {
+            TakeDamage(1f);
+        }
     }
 
     private void justDie()
