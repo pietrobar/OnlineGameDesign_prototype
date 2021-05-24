@@ -91,6 +91,9 @@ public class GameManager : MonoBehaviour
         Destroy(_player);
         panelSetting.SetActive(false);
         panelPlay.SetActive(false);
+        EnemyHealth.enemiesKill = 0;
+        Newspaper.newspaperCount = 0;
+        CountXP.xp = 0;
         PhotonNetwork.Disconnect();
         SceneManager.LoadScene("CharacterSelect");
         //Application.Quit(); non deve uscire dal gioco
