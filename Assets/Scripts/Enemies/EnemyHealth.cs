@@ -14,6 +14,7 @@ public class EnemyHealth : Photon.MonoBehaviour
 
     public HealthBar healthBar;
     private Animator animator;
+    private bool alreadyDead = false;
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +28,7 @@ public class EnemyHealth : Photon.MonoBehaviour
     {
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
-        if (currentHealth <= 0f)
+        if (currentHealth <= 0f && !alreadyDead)
             SimpleDie(type);
         else
             animator.SetTrigger("getHit");
@@ -45,7 +46,7 @@ public class EnemyHealth : Photon.MonoBehaviour
         {
             currentHealth -= damage;
             healthBar.SetHealth(currentHealth);
-            if (currentHealth <= 0f)
+            if (currentHealth <= 0f && !alreadyDead)
                 SimpleDie(type);
             else
                 animator.SetTrigger("getHit");
@@ -55,6 +56,7 @@ public class EnemyHealth : Photon.MonoBehaviour
 
     private void SimpleDie(string type)
     {
+        alreadyDead = true;
         animator.SetTrigger("die");  
         if(GameManager.instance._player.name==type)
             CountXP.setXP(expGiven);
