@@ -14,8 +14,8 @@ public class GameManager : MonoBehaviour
     public GameObject diePanel;
     public Text respawnCounter;
 
-    private GameObject _player;
-
+    public GameObject _player;
+    
     public Transform spawnPoint;
 
     public static bool inGame=true;
@@ -51,6 +51,7 @@ public class GameManager : MonoBehaviour
     {
         //instanzio il giocatore
         int characterIndex = PlayerPrefs.GetInt("CharacterIndex");
+        _player = characterPrefab[characterIndex];
         instantiatedPlayers[characterIndex]=PhotonNetwork.Instantiate(characterPrefab[characterIndex].name, spawnPoint.position, spawnPoint.rotation, 0);
     }
 
@@ -88,7 +89,6 @@ public class GameManager : MonoBehaviour
 
     public void ButtonQuit()
     {
-        Destroy(_player);
         panelSetting.SetActive(false);
         panelPlay.SetActive(false);
         EnemyHealth.enemiesKill = 0;

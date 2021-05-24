@@ -227,6 +227,7 @@ GameObject:
   - component: {fileID: 1941476668357909907}
   - component: {fileID: 4755815975915652896}
   - component: {fileID: 5683195035365771518}
+  - component: {fileID: -2093055924879232860}
   - component: {fileID: 2218282365608785502}
   - component: {fileID: 7678937022689520178}
   - component: {fileID: 2102268252465863822}
@@ -361,6 +362,7 @@ MonoBehaviour:
   ownershipTransfer: 0
   ObservedComponents:
   - {fileID: 5683195035365771518}
+  - {fileID: -2093055924879232860}
   ObservedComponentsFoldoutOpen: 1
   viewIdField: 0
   instantiationId: -1
@@ -444,6 +446,36 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
+--- !u!114 &-2093055924879232860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4372673981705240167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters:
+  - Type: 4
+    SynchronizeType: 1
+    Name: carica
+  - Type: 4
+    SynchronizeType: 1
+    Name: Running
+  - Type: 4
+    SynchronizeType: 1
+    Name: Jumping
+  - Type: 4
+    SynchronizeType: 1
+    Name: FastRunning
+  m_SynchronizeLayers:
+  - SynchronizeType: 1
+    LayerIndex: 0
 --- !u!114 &2218282365608785502
 MonoBehaviour:
   m_ObjectHideFlags: 0
