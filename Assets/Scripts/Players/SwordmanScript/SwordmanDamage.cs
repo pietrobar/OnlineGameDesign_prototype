@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SwordmanDamage : MonoBehaviour
+public class SwordmanDamage : Photon.MonoBehaviour
 {
     //private Animator animator;
     private Animator animator;
@@ -22,14 +22,21 @@ public class SwordmanDamage : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other && other.tag == "Enemy" && animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
+        if (GameManager.instance.GetInstantiatedPlayers()[2] != null)
         {
-            if (isColliding) return;
+            if (other && other.tag == "Enemy" && animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
+            {
+                if (isColliding) return;
 
-            isColliding = true;
-            StartCoroutine(Reset());
+                isColliding = true;
+                StartCoroutine(Reset());
 
-            other.gameObject.GetComponent<EnemyHealth>().TakeDamage("Swordman",swordDamage + (PanelEXP.valueAttack / 50));
+                other.gameObject.GetComponent<EnemyHealth>().TakeDamage("Swordman", swordDamage + (PanelEXP.valueAttack / 50));
+            }
         }
+        
+        
+        
+        
     }
 }
