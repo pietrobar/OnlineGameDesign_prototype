@@ -22,6 +22,7 @@ public class EnemyController : MonoBehaviour
         targetPlayers = GameManager.instance.GetInstantiatedPlayers();
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+        agent.stoppingDistance += 0.5f;
     }
 
     private Transform Nearest(GameObject[] players)
@@ -42,20 +43,20 @@ public class EnemyController : MonoBehaviour
             }
             
         }
-
+        if (nearestPlayer == null) return null;
         return nearestPlayer.transform;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (targetPlayers[0])
-        {
-            target = targetPlayers[0].transform;//TODO: si deve scegliere un personaggio random, o meglio ancora, quello piu' vicino
-            //target = Nearest(targetPlayers);
+        
+            //target = targetPlayers[0].transform;
+            target = Nearest(GameObject.FindGameObjectsWithTag("Player"));//non posso usare targetPlayer per prendere i giocatori, perche' contiene solo il player locale
             if (target)
             {
                 float distance = Vector3.Distance(target.position, transform.position);
+                
                 if (distance <= lookRadius && !animator.GetCurrentAnimatorStateInfo(0).IsName("GetHit") && !animator.GetCurrentAnimatorStateInfo(0).IsName("Die"))//vedo il player nel mio campo visivo
                 {
                     agent.isStopped = false;
@@ -86,7 +87,7 @@ public class EnemyController : MonoBehaviour
             }
 
             
-        }
+        
     }
 
     void FaceTarget()

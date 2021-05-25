@@ -57,8 +57,8 @@ public class GameManager : MonoBehaviour
         
         ExitGames.Client.Photon.Hashtable currentHt = PhotonNetwork.room.CustomProperties;
         
-            currentHt.Add(ChoseCharacter.instance.characterIndex.ToString(), "giocatore presente");
-            PhotonNetwork.room.SetCustomProperties(currentHt);
+        currentHt.Add(ChoseCharacter.instance.characterIndex.ToString(), "giocatore presente");
+        PhotonNetwork.room.SetCustomProperties(currentHt);
         
         
         

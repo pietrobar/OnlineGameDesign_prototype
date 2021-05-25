@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEditor;
 
 public class RoomListings : Photon.PunBehaviour
 { 
@@ -38,7 +37,7 @@ public class RoomListings : Photon.PunBehaviour
         }
         else
         {
-            EditorUtility.DisplayDialog("Room already present", "", "ok");
+            Debug.Log("Stanza gia' presente");//todo creare una specie di alert
         }
         
     }
@@ -93,7 +92,7 @@ public class RoomListings : Photon.PunBehaviour
     {
         return info.CustomProperties.ContainsKey(ChoseCharacter.instance.characterIndex.ToString());
     }
-
+    /*
     public void OnRoomListUpdate(List<RoomInfo> roomList)//questo non funziona (verificare prima di cancellare
     {//chiamato solo se sono in una lobby
         
@@ -117,5 +116,5 @@ public class RoomListings : Photon.PunBehaviour
                 }
             }
         }
-    }
+    }*/
 }
