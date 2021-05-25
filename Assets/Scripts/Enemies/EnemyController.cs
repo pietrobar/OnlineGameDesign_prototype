@@ -82,11 +82,11 @@ public class EnemyController : MonoBehaviour
                 {
                     agent.isStopped = true;//fermo l'agente se e' stato colpito per fare l'animazione gethit
 
-                }else if(distance>lookRadius && animator.GetBool("walk"))//se mi allontano troppo si ferma di nuovo
+                }/*else if(distance>lookRadius && animator.GetBool("walk"))//se mi allontano troppo si ferma di nuovo
                 {
                     animator.SetBool("walk", false);
                     agent.isStopped = true;
-                }
+                }*/
                 
             }
 
