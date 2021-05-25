@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class CountXP : MonoBehaviour
 {
     private Text label;
-    private static int xp;
+    public static int xp;
 
     // Start is called before the first frame update
     void Start()

@@ -53,6 +53,15 @@ public class GameManager : MonoBehaviour
         int characterIndex = PlayerPrefs.GetInt("CharacterIndex");
         _player = characterPrefab[characterIndex];
         instantiatedPlayers[characterIndex]=PhotonNetwork.Instantiate(characterPrefab[characterIndex].name, spawnPoint.position, spawnPoint.rotation, 0);
+
+        
+        ExitGames.Client.Photon.Hashtable currentHt = PhotonNetwork.room.CustomProperties;
+        
+        currentHt.Add(ChoseCharacter.instance.characterIndex.ToString(), "giocatore presente");
+        PhotonNetwork.room.SetCustomProperties(currentHt);
+        
+        
+        
     }
 
 
@@ -91,6 +100,9 @@ public class GameManager : MonoBehaviour
     {
         panelSetting.SetActive(false);
         panelPlay.SetActive(false);
+        EnemyHealth.enemiesKill = 0;
+        Newspaper.newspaperCount = 0;
+        CountXP.xp = 0;
         PhotonNetwork.Disconnect();
         SceneManager.LoadScene("CharacterSelect");
         //Application.Quit(); non deve uscire dal gioco
