@@ -12,8 +12,14 @@ public class ChoseCharacter : MonoBehaviour
 
     
     
-    private int characterIndex=0;//per fare in modo che il primo character selezionato sia quello in posizione 0 lo metto di default nello start
+    public int characterIndex=0;//per fare in modo che il primo character selezionato sia quello in posizione 0 lo metto di default nello start
 
+    public static ChoseCharacter instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     public void changeCharacter()
     {

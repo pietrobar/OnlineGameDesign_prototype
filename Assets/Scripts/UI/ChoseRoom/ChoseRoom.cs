@@ -10,7 +10,7 @@ public class ChoseRoom : MonoBehaviour
     public void JoinRoomAndStart()
     {
         string rn = RoomListingPref.roomName;
-        PhotonNetwork.JoinRoom(rn);//TODO:controllare che non ci siano gia' 3 giocatori
+        PhotonNetwork.JoinRoom(rn);
         SceneManager.LoadScene("GameScene");
 
     }

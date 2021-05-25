@@ -53,6 +53,15 @@ public class GameManager : MonoBehaviour
         int characterIndex = PlayerPrefs.GetInt("CharacterIndex");
         _player = characterPrefab[characterIndex];
         instantiatedPlayers[characterIndex]=PhotonNetwork.Instantiate(characterPrefab[characterIndex].name, spawnPoint.position, spawnPoint.rotation, 0);
+
+        
+        ExitGames.Client.Photon.Hashtable currentHt = PhotonNetwork.room.CustomProperties;
+        
+            currentHt.Add(ChoseCharacter.instance.characterIndex.ToString(), "giocatore presente");
+            PhotonNetwork.room.SetCustomProperties(currentHt);
+        
+        
+        
     }
 
 
