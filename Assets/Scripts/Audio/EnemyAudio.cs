@@ -6,7 +6,6 @@ public class EnemyAudio : MonoBehaviour
 {
     Animator anim;
     public AudioSource footSteps;
-    public AudioSource mussu;
 
 
     private void Start()
@@ -25,7 +24,7 @@ public class EnemyAudio : MonoBehaviour
         else if (anim.GetCurrentAnimatorStateInfo(0).IsName("GetHit") || anim.GetCurrentAnimatorStateInfo(0).IsName("Die"))
         {
             footSteps.Stop();
-            mussu.Play();
+            
             
         }
     }
