@@ -498,5 +498,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: MyMagician
       objectReference: {fileID: 0}
+    - target: {fileID: 5268498979757133414, guid: bf183527b73574644b24837fd1ceafc0,
+        type: 3}
+      propertyPath: viewIdField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5268498979757133414, guid: bf183527b73574644b24837fd1ceafc0,
+        type: 3}
+      propertyPath: instantiationId
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf183527b73574644b24837fd1ceafc0, type: 3}
