@@ -1223,7 +1223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a5fecaaab45edb4ab36b005f0c1e2f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lookRadius: 10
+  lookRadius: 20
 --- !u!195 &3015557864426558431
 NavMeshAgent:
   m_ObjectHideFlags: 0
