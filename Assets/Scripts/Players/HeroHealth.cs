@@ -43,7 +43,7 @@ public class HeroHealth : MonoBehaviour
     {
         if (PanelEXP.valueHealth != 0)
         {
-            currentHealth -= damage / PanelEXP.valueHealth;
+            currentHealth -= damage / (PanelEXP.valueHealth/2);
             healthBar.SetHealth(currentHealth);
         }
         else
