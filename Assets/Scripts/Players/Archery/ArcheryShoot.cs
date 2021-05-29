@@ -57,7 +57,7 @@ public class ArcheryShoot : Photon.MonoBehaviour
 
     void ShootProjectile()
     {
-        Ray ray = new Ray(player.position, player.forward);
+        Ray ray = new Ray(player.position, player.forward + new Vector3(0f, 0.05f, 0f));
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
             destination = hit.point;
@@ -73,8 +73,6 @@ public class ArcheryShoot : Photon.MonoBehaviour
         {
             animator.SetBool("carica", true);
             photonView.RPC("InstantiateRPC", PhotonTargets.All, null);
-            
-
         }
         
     }
