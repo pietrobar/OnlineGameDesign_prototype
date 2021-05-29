@@ -67,11 +67,11 @@ public class HeroHealth : MonoBehaviour
     {
         if (collision.collider.gameObject.name == "Index_Proximal_L" && collision.collider.gameObject.transform.root.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Attack02"))//index proximal l e' il pugno sinistro del golem
         {
-            //controllo ulteriormente che se il giocatore in questione e' il soldato e sta facendo l'animazione di difesa non deve farsi male
+            //controllo ulteriormente che se il giocatore in questione e' il soldato e sta facendo l'animazione di difesa non deve farsi tanto male
             if (GameManager.instance.GetInstantiatedPlayers()[2] != null && GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Defense"))
             {
-                //non prendo dammaggio dato che mi sto parando e sono il soldato
                 //qui si potrebbe aggiungere un eventuale audio di colpo sullo scudo
+                TakeDamage(0.1f);
             }
             else
             {
