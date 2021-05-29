@@ -1120,6 +1120,7 @@ GameObject:
   - component: {fileID: 7498541088216389668}
   - component: {fileID: 5976952241348618737}
   - component: {fileID: 1742162702648955558}
+  - component: {fileID: 1306125680063964805}
   m_Layer: 0
   m_Name: Polyart_Golem
   m_TagString: Enemy
@@ -1531,6 +1532,19 @@ CapsuleCollider:
   m_Height: 1.4077563
   m_Direction: 1
   m_Center: {x: -1.7, y: 1.87, z: 0.25642145}
+--- !u!65 &1306125680063964805
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7748130633277201212}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.511809, y: 1.566212, z: 1}
+  m_Center: {x: -0.022669183, y: 0.75251096, z: 0}
 --- !u!1 &7748130633403791991
 GameObject:
   m_ObjectHideFlags: 0

@@ -47,7 +47,8 @@ public class ArcheryShoot : Photon.MonoBehaviour
         if(fire1Pressed)
         {
             //forceCharge = (int)(forceCharge + Time.deltaTime * chargeSpeed);
-            if(forceCharge<1000)forceCharge++;
+            if(forceCharge<1000)
+                forceCharge += (int)(Time.deltaTime * 150);
             InstantiateAndGrow();
             
         }
