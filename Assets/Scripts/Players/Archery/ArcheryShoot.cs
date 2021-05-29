@@ -47,7 +47,8 @@ public class ArcheryShoot : Photon.MonoBehaviour
         if(fire1Pressed)
         {
             //forceCharge = (int)(forceCharge + Time.deltaTime * chargeSpeed);
-            if(forceCharge<1000)forceCharge++;
+            if(forceCharge<1000)
+                forceCharge += (int)(Time.deltaTime * 150);
             InstantiateAndGrow();
             
         }
@@ -56,7 +57,7 @@ public class ArcheryShoot : Photon.MonoBehaviour
 
     void ShootProjectile()
     {
-        Ray ray = new Ray(player.position, player.forward);
+        Ray ray = new Ray(player.position, player.forward + new Vector3(0f, 0.05f, 0f));
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
             destination = hit.point;
@@ -72,8 +73,6 @@ public class ArcheryShoot : Photon.MonoBehaviour
         {
             animator.SetBool("carica", true);
             photonView.RPC("InstantiateRPC", PhotonTargets.All, null);
-            
-
         }
         
     }
@@ -103,6 +102,7 @@ public class ArcheryShoot : Photon.MonoBehaviour
             projectileObj.AddComponent<Rigidbody>();
             projectileObj.GetComponent<Rigidbody>().velocity = (dest - firePoint.position).normalized * param / 2;
             projectileObj.GetComponent<BowTut>().force = param;
+            projectileObj.GetComponent<TrailRenderer>().enabled = true;
         }
     }
 }
