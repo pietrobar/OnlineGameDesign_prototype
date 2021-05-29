@@ -24,7 +24,7 @@ public class SwordmanMovements : MonoBehaviour
         if (GameManager.inGame)
         {
             //In questo metodo gestisco le animazioni del player in questione
-            animator.SetBool("Block", Input.GetKey(KeyCode.E));
+            animator.SetBool("Block", Input.GetKey(KeyCode.Mouse1));
 
 
            
