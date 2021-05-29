@@ -67,7 +67,8 @@ public class PlayerMovements : MonoBehaviour
         if (animator)//controllo che l'animator non sia null
         {
             if (Input.GetKey(KeyCode.LeftShift) && isGrounded())
-                rigidBody.MovePosition(rigidBody.position + movement * (fastRunCoeff + (PanelEXP.valueSpeed / 5)));//applico il movimento con velocita' maggiore
+                //(PanelEXP.valueSpeed / 30) l'ideale sarebbe mettere 20
+                rigidBody.MovePosition(rigidBody.position + movement * (fastRunCoeff + (PanelEXP.valueSpeed / 30)));//applico il movimento con velocita' maggiore
             else
                 rigidBody.MovePosition(rigidBody.position + movement * animator.deltaPosition.magnitude);//applico il movimento
 
