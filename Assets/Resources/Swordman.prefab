@@ -1356,7 +1356,7 @@ GameObject:
   - component: {fileID: 957660648161523475}
   - component: {fileID: 6671988028819205593}
   m_Layer: 0
-  m_Name: SwordmanPrefabComplete
+  m_Name: Swordman
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1442,7 +1442,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f69bea2f6f32e57489677a559c1e29b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fastRunCoeff: 0.18
+  fastRunCoeff: 0.12
   turnSpeed: 20
   jumpForce: 3
   visualRotationSpeed: 400
