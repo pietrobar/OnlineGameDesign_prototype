@@ -23,6 +23,7 @@ public class EnemyHealth : Photon.MonoBehaviour
         healthBar.SetMaxHealth(maxHealth);
         animator = GetComponent<Animator>();
     }
+
     [PunRPC]
     void HitBySwordRPC(string type, float damage)
     {
@@ -57,7 +58,8 @@ public class EnemyHealth : Photon.MonoBehaviour
     private void SimpleDie(string type)
     {
         alreadyDead = true;
-        animator.SetTrigger("die");  
+        animator.SetTrigger("die");
+        Debug.Log(GameManager.instance._player.name);
         if(GameManager.instance._player.name==type)
             CountXP.setXP(expGiven);
         Destroy(gameObject,2);

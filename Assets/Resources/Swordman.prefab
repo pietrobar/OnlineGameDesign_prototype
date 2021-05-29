@@ -1356,7 +1356,7 @@ GameObject:
   - component: {fileID: 957660648161523475}
   - component: {fileID: 6671988028819205593}
   m_Layer: 0
-  m_Name: SwordmanPrefabComplete
+  m_Name: Swordman
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1415,7 +1415,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!136 &2988778288465388533
 CapsuleCollider:
   m_ObjectHideFlags: 0

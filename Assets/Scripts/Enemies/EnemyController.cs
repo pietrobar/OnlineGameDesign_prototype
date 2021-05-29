@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class EnemyController : MonoBehaviour
 {
 
-    public float lookRadius = 10f;
+    public float lookRadius = 20f;
 
     GameObject[] targetPlayers;
 
