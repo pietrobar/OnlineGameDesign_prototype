@@ -102,6 +102,7 @@ public class ArcheryShoot : Photon.MonoBehaviour
             projectileObj.AddComponent<Rigidbody>();
             projectileObj.GetComponent<Rigidbody>().velocity = (dest - firePoint.position).normalized * param / 2;
             projectileObj.GetComponent<BowTut>().force = param;
+            projectileObj.GetComponent<TrailRenderer>().enabled = true;
         }
     }
 }
