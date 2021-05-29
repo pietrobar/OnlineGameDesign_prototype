@@ -68,16 +68,16 @@ public class PlayerMovements : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.LeftShift) && isGrounded())
                 //(PanelEXP.valueSpeed / 30) l'ideale sarebbe mettere 20
-                rigidBody.MovePosition(rigidBody.position + movement * (fastRunCoeff + (PanelEXP.valueSpeed / 30)));//applico il movimento con velocita' maggiore
+                rigidBody.MovePosition(rigidBody.position + movement * (fastRunCoeff + (PanelEXP.valueSpeed / 30)) * Time.deltaTime * 50);//applico il movimento con velocita' maggiore
             else
-                rigidBody.MovePosition(rigidBody.position + movement * animator.deltaPosition.magnitude);//applico il movimento
+                rigidBody.MovePosition(rigidBody.position + movement * animator.deltaPosition.magnitude * Time.deltaTime * 100);//applico il movimento
 
-            
+
             if (animator.GetBool("Jumping") && isGrounded())
             {
                 if (rigidBody.velocity.x >= 0 || rigidBody.velocity.z >= 0)//voglio continuare a muovermi anche quando salto
                 {
-                    rigidBody.AddForce(new Vector3(movement.x, 1f, movement.z) * jumpForce, ForceMode.VelocityChange);//salta solo se e' a terra
+                    rigidBody.AddForce(new Vector3(movement.x, 1f, movement.z) * jumpForce *1.2f, ForceMode.VelocityChange);//salta solo se e' a terra
 
                 }
                 rigidBody.AddForce(Vector3.up * jumpForce, ForceMode.VelocityChange);//salta solo se e' a terra
