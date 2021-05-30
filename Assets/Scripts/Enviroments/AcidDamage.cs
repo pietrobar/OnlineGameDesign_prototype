@@ -25,8 +25,11 @@ public class AcidDamage : MonoBehaviour
     {
         if (other.transform.tag == "Player")
         {
-            other.gameObject.GetComponent<HeroHealth>().TakeDamage(acidDamage);
-            timer = 0.0f;
+            if (other.gameObject.GetComponent<HeroHealth>())
+            {
+                other.gameObject.GetComponent<HeroHealth>().TakeDamage(acidDamage);
+                timer = 0.0f;
+            }
         }
     }
 
@@ -34,10 +37,13 @@ public class AcidDamage : MonoBehaviour
     {
         if (other.transform.tag == "Player")
         {
-            if (timer >= 2f)
+            if (other.gameObject.GetComponent<HeroHealth>())
             {
-                other.gameObject.GetComponent<HeroHealth>().TakeDamage(acidDamage);
-                timer = 0.0f;
+                if (timer >= 2f)
+                {
+                    other.gameObject.GetComponent<HeroHealth>().TakeDamage(acidDamage);
+                    timer = 0.0f;
+                }
             }
         }
     }
