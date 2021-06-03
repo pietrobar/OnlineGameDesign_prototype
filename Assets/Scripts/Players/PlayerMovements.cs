@@ -53,15 +53,31 @@ public class PlayerMovements : MonoBehaviour
             animator.SetBool("Jumping", Input.GetKeyDown(KeyCode.Space));
 
             animator.SetBool("FastRunning", Input.GetKey(KeyCode.LeftShift));
+
+            //movimento veloce e corsa normale
+            if (Input.GetKey(KeyCode.LeftShift) && isGrounded())
+                //(PanelEXP.valueSpeed / 30) l'ideale sarebbe mettere 20
+                rigidBody.MovePosition(rigidBody.position + movement * (fastRunCoeff + (PanelEXP.valueSpeed / 30)) * Time.deltaTime * 50);//applico il movimento con velocita' maggiore
+            else
+                rigidBody.MovePosition(rigidBody.position + movement * Time.deltaTime *5);//applico il movimento
+
+
+            if (animator.GetBool("Jumping") && isGrounded())
+            {
+                rigidBody.AddForce(Vector3.up * jumpForce *2, ForceMode.VelocityChange);//salta solo se e' a terra
+            }
         }
         else//se faccio esc devono finire i movimenti
         {
             animator.SetBool("Running", false);
             animator.SetBool("FastRunning", false);
         }
+        
+
     }
 
     //OnAnimatorMove is actually going to be called in time with physics, and not with rendering like your Update method
+    /*
     private void OnAnimatorMove()//This method allows you to apply root motion as you want, which means that movement and rotation can be applied separately.
     {
         if (animator)//controllo che l'animator non sia null
@@ -86,7 +102,7 @@ public class PlayerMovements : MonoBehaviour
         }
 
 
-    }
+    }*/
 
     public Vector3 getMovement()
     {

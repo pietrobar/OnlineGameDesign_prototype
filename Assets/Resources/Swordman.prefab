@@ -1394,7 +1394,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: fa1c6303ee79b624c8097a197a9ccaf7, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -1599,6 +1599,9 @@ MonoBehaviour:
   - Type: 9
     SynchronizeType: 1
     Name: AttackRunning
+  - Type: 4
+    SynchronizeType: 0
+    Name: dying
   m_SynchronizeLayers:
   - SynchronizeType: 1
     LayerIndex: 0
