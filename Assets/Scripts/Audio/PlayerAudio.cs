@@ -14,7 +14,7 @@ public class PlayerAudio : MonoBehaviour
 
     private void Update()
     {
-        if (anim.GetBool("Running") && !footStep.isPlaying)
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("infantry_03_run_rm") && !footStep.isPlaying)
         {
             footStep.Play();
         }
