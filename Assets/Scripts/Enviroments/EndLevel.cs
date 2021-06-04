@@ -23,10 +23,10 @@ public class EndLevel : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-        Debug.Log(players.Length);
         if (other.tag == "Player")
         {
             countPlayer++;
+            Debug.Log(countPlayer);
             if (countPlayer == players.Length)
             {
                 GameManager.inGame = false;

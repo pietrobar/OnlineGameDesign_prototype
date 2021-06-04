@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAudio : MonoBehaviour
+public class PlayerAudio : Photon.MonoBehaviour
 {
     Animator anim;
     public AudioSource footStep;
@@ -14,9 +14,12 @@ public class PlayerAudio : MonoBehaviour
 
     private void Update()
     {
-        if (anim.GetCurrentAnimatorStateInfo(0).IsName("infantry_03_run_rm") && !footStep.isPlaying)
+        if (photonView.isMine)
         {
-            footStep.Play();
+            if (anim.GetCurrentAnimatorStateInfo(0).IsName("infantry_03_run_rm") && !footStep.isPlaying)
+            {
+                footStep.Play();
+            }
         }
     }
 }
