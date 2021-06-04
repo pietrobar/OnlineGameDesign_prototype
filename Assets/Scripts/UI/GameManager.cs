@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public GameObject panelSetting;
     public GameObject panelPlay;
     public GameObject diePanel;
+    public GameObject endLevelPanel;
     public Text respawnCounter;
 
     public GameObject _player;
