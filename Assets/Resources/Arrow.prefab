@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5361308968445548550}
   - component: {fileID: -8611788810030016022}
   - component: {fileID: 2090541287530140236}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Arrow
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -250,7 +250,7 @@ GameObject:
   - component: {fileID: 2657325369875608736}
   - component: {fileID: 8383807556111965310}
   - component: {fileID: 3328477575982626154}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Arrow
   m_TagString: Bullet
   m_Icon: {fileID: 0}
