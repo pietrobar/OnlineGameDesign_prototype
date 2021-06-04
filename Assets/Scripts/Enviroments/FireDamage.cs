@@ -22,7 +22,7 @@ public class FireDamage : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "Player" && other.gameObject == GameManager.instance.GetMyPlayer())
         {
             other.gameObject.GetComponent<HeroHealth>().TakeDamage(fireDamage);
             timer = 0.0f;
@@ -31,7 +31,7 @@ public class FireDamage : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "Player" && other.gameObject == GameManager.instance.GetMyPlayer())
         {
             if (timer >= 2f)
             {

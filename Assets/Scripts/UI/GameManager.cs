@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public GameObject panelSetting;
     public GameObject panelPlay;
     public GameObject diePanel;
+    public GameObject endLevelPanel;
     public Text respawnCounter;
 
     public GameObject _player;
@@ -22,6 +23,7 @@ public class GameManager : MonoBehaviour
 
     private GameObject[] instantiatedPlayers = new GameObject[3];
 
+    private GameObject myPlayer;
 
     
     public static GameManager instance;
@@ -59,8 +61,8 @@ public class GameManager : MonoBehaviour
         
         currentHt.Add(ChoseCharacter.instance.characterIndex.ToString(), "giocatore presente");
         PhotonNetwork.room.SetCustomProperties(currentHt);
-        
-        
+
+        myPlayer = instantiatedPlayers[characterIndex];
         
     }
 
@@ -142,5 +144,10 @@ public class GameManager : MonoBehaviour
         {
             return 0;
         }
+    }
+
+    public GameObject GetMyPlayer()
+    {
+        return this.myPlayer;
     }
 }
