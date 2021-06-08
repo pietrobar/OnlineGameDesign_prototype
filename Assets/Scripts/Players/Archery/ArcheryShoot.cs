@@ -58,11 +58,7 @@ public class ArcheryShoot : Photon.MonoBehaviour
     void ShootProjectile()
     {
         Ray ray = new Ray(player.position, player.forward + new Vector3(0f, 0.05f, 0f));
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit))
-            destination = hit.point;
-        else
-            destination = ray.GetPoint(1000);
+        destination = ray.GetPoint(1000);
         throwProjectile();
         
     }

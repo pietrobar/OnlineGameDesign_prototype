@@ -52,11 +52,7 @@ public class MagicianShoot :Photon. MonoBehaviour
     void ShootProjectile()
     {
         Ray ray = new Ray(player.position, player.forward);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit))
-            destination = hit.point;
-        else
-            destination = ray.GetPoint(1000);
+        destination = ray.GetPoint(1000);
         //InstantiateProjectile();
         throwProjectile();
     }
