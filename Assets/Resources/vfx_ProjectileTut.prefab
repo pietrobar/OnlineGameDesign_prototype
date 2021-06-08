@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7012507073640230958}
   - component: {fileID: 3223427121423353250}
   - component: {fileID: 6917267287264136407}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: vfx_ProjectileTut
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -78,6 +78,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   impactVFX: {fileID: 8373220382807060644, guid: 619d08f193a8f47ec92d9c455337aca9,
     type: 3}
+  force: 0
 --- !u!1 &8414468297625174160
 GameObject:
   m_ObjectHideFlags: 0
@@ -88,7 +89,7 @@ GameObject:
   m_Component:
   - component: {fileID: 189010497072094935}
   - component: {fileID: 8456781539831296186}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -226,7 +227,7 @@ GameObject:
   - component: {fileID: 2460864990881091096}
   - component: {fileID: 5820752920392044354}
   - component: {fileID: 1586730686840420017}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
