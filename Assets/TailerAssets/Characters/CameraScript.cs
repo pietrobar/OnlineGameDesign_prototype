@@ -6,9 +6,10 @@ public class CameraScript : MonoBehaviour
 {
 
     // Update is called once per frame
+    public float speed=.5f;
     void Update()
     {
-        transform.Translate(Vector3.back *.01f);
+        transform.Translate(Vector3.back *speed);
     }
 
 }
