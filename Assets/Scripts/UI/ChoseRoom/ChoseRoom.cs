@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ChoseRoom : MonoBehaviour
 {
 
+    public GameObject choseCharacterPanel;
+    public GameObject choseRoomPanel;
     
     public void JoinRoomAndStart()
     {
@@ -13,5 +16,11 @@ public class ChoseRoom : MonoBehaviour
         PhotonNetwork.JoinRoom(rn);
         SceneManager.LoadScene("GameScene");
 
+    }
+
+    public void BackToChoseCharacter()
+    {
+        choseRoomPanel.SetActive(false);
+        choseCharacterPanel.SetActive(true);
     }
 }
