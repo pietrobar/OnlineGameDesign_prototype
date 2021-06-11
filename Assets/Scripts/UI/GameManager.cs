@@ -104,6 +104,9 @@ public class GameManager : MonoBehaviour
         panelPlay.SetActive(false);
         EnemyHealth.enemiesKill = 0;
         Newspaper.newspaperCount = 0;
+        PanelEXP.valueSpeed = 0;
+        PanelEXP.valueAttack = 0;
+        PanelEXP.valueHealth = 0;
         CountXP.xp = 0;
         PhotonNetwork.Disconnect();
         SceneManager.LoadScene("CharacterSelect");

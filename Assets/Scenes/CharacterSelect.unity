@@ -775,8 +775,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b22cc5ee3753f7944b533b0f8fd37857, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  choseCharacterPanel: {fileID: 0}
-  playGamePanel: {fileID: 0}
+  choseCharacterPanel: {fileID: 1343444180}
+  playGamePanel: {fileID: 569446329}
 --- !u!1001 &635280456
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3701,7 +3701,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   choseCharacterPanel: {fileID: 1343444180}
-  playGamePanel: {fileID: 569446329}
   choseRoomPanel: {fileID: 1562784207}
 --- !u!114 &1562784210
 MonoBehaviour:
