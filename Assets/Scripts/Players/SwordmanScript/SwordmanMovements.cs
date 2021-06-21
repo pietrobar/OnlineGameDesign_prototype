@@ -9,6 +9,11 @@ public class SwordmanMovements : MonoBehaviour
     PlayerMovements scriptMovements;
 
     public GameObject sword;
+
+
+    //AUDIO
+    public AudioSource swordSwing;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,8 +32,12 @@ public class SwordmanMovements : MonoBehaviour
             animator.SetBool("Block", Input.GetKey(KeyCode.Mouse1));
 
 
-           
-            if (Input.GetKeyDown(KeyCode.Mouse0) && GetComponent<PlayerMovements>().isGrounded()) animator.SetTrigger("Attack");
+
+            if (Input.GetKeyDown(KeyCode.Mouse0) && GetComponent<PlayerMovements>().isGrounded())
+            {
+                swordSwing.Play();
+                animator.SetTrigger("Attack");
+            }
         }
         
     }

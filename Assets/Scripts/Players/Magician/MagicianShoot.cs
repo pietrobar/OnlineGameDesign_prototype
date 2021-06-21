@@ -15,6 +15,10 @@ public class MagicianShoot :Photon. MonoBehaviour
     GameObject projectileObj;
     private bool fire1Pressed = false;
 
+
+    //AUDIO
+    public AudioSource castSpell;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +37,7 @@ public class MagicianShoot :Photon. MonoBehaviour
             }
             else if (Input.GetButtonUp("Fire1"))
             {
+                castSpell.Play();
                 fire1Pressed = false;
                 ShootProjectile();
                 forceCharge = 0;

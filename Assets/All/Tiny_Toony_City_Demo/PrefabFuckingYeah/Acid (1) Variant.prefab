@@ -7,10 +7,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8526757796543401061, guid: c861e2567bfc3468fa20a00b74069b3d,
+        type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 0.85
+      objectReference: {fileID: 0}
     - target: {fileID: 8773496791581113411, guid: c861e2567bfc3468fa20a00b74069b3d,
         type: 3}
       propertyPath: m_Name
-      value: Acid (1)
+      value: Acid (13)
       objectReference: {fileID: 0}
     - target: {fileID: 8773496791581113436, guid: c861e2567bfc3468fa20a00b74069b3d,
         type: 3}
@@ -20,17 +25,17 @@ PrefabInstance:
     - target: {fileID: 8773496791581113436, guid: c861e2567bfc3468fa20a00b74069b3d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -18.18
+      value: -4.5576763
       objectReference: {fileID: 0}
     - target: {fileID: 8773496791581113436, guid: c861e2567bfc3468fa20a00b74069b3d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.34
+      value: 3.3208053
       objectReference: {fileID: 0}
     - target: {fileID: 8773496791581113436, guid: c861e2567bfc3468fa20a00b74069b3d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 43.47
+      value: 28.82962
       objectReference: {fileID: 0}
     - target: {fileID: 8773496791581113436, guid: c861e2567bfc3468fa20a00b74069b3d,
         type: 3}
@@ -40,17 +45,17 @@ PrefabInstance:
     - target: {fileID: 8773496791581113436, guid: c861e2567bfc3468fa20a00b74069b3d,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8773496791581113436, guid: c861e2567bfc3468fa20a00b74069b3d,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8773496791581113436, guid: c861e2567bfc3468fa20a00b74069b3d,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8773496791581113436, guid: c861e2567bfc3468fa20a00b74069b3d,
         type: 3}
@@ -67,5 +72,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8773496791581113437, guid: c861e2567bfc3468fa20a00b74069b3d,
+        type: 3}
+      propertyPath: acidBurd
+      value: 
+      objectReference: {fileID: 7584358915600234850}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c861e2567bfc3468fa20a00b74069b3d, type: 3}
+--- !u!82 &7584358915600234850 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8526757796543401061, guid: c861e2567bfc3468fa20a00b74069b3d,
+    type: 3}
+  m_PrefabInstance: {fileID: 2239466909746083079}
+  m_PrefabAsset: {fileID: 0}

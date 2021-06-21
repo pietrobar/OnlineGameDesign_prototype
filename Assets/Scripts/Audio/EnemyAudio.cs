@@ -7,6 +7,8 @@ public class EnemyAudio : MonoBehaviour
     Animator anim;
     public AudioSource footSteps;
 
+    public AudioSource pain;
+
 
     private void Start()
     {
@@ -24,8 +26,12 @@ public class EnemyAudio : MonoBehaviour
         else if (anim.GetCurrentAnimatorStateInfo(0).IsName("GetHit") || anim.GetCurrentAnimatorStateInfo(0).IsName("Die"))
         {
             footSteps.Stop();
-            
-            
         }
+    }
+
+    //questo metodo e' richiamato da un evento generato dall'animazione del golem
+    void PainSound()
+    {
+        pain.Play();
     }
 }

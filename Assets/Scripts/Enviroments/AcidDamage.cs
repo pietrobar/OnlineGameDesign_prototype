@@ -8,11 +8,8 @@ public class AcidDamage : MonoBehaviour
 
     public float acidDamage = 2f;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
+    //AUDIO
+    public AudioSource acidBurd;
 
     // Update is called once per frame
     void Update()
@@ -25,6 +22,7 @@ public class AcidDamage : MonoBehaviour
     {
         if (other.transform.tag == "Player")
         {
+            acidBurd.Play();
             if (other.gameObject.GetComponent<HeroHealth>())
             {
                 other.gameObject.GetComponent<HeroHealth>().TakeDamage(acidDamage);
