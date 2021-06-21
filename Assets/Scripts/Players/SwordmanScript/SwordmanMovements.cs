@@ -35,7 +35,8 @@ public class SwordmanMovements : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Mouse0) && GetComponent<PlayerMovements>().isGrounded())
             {
-                swordSwing.Play();
+                if(!animator.GetCurrentAnimatorStateInfo(0).IsName("Attack") && !swordSwing.isPlaying)
+                    swordSwing.Play();
                 animator.SetTrigger("Attack");
             }
         }
