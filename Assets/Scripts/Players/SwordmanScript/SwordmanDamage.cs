@@ -29,9 +29,10 @@ public class SwordmanDamage : Photon.MonoBehaviour
         {
             if (other && other.tag == "Enemy" && animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
             {
-                swordHit.Play();
+                
                 if (isColliding) return;
 
+                swordHit.Play();
                 isColliding = true;
                 StartCoroutine(Reset());
 
