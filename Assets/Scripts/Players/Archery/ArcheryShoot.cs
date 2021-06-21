@@ -15,6 +15,9 @@ public class ArcheryShoot : Photon.MonoBehaviour
     private Animator animator;
     private bool fire1Pressed = false;
 
+    //AUDIO
+    public AudioSource bowSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +38,7 @@ public class ArcheryShoot : Photon.MonoBehaviour
             }
             else if (Input.GetButtonUp("Fire1"))
             {
+                bowSound.Play();
                 fire1Pressed = false;
                 ShootProjectile();
                 forceCharge = 1;

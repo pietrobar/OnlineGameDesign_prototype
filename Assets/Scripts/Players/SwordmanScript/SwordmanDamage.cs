@@ -9,6 +9,9 @@ public class SwordmanDamage : Photon.MonoBehaviour
     public float swordDamage = 1f;
     private bool isColliding = false;
 
+    //AUDIO
+    public AudioSource swordHit;
+
     IEnumerator Reset()
     {
         yield return new WaitForSeconds(0.65f);
@@ -26,8 +29,10 @@ public class SwordmanDamage : Photon.MonoBehaviour
         {
             if (other && other.tag == "Enemy" && animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
             {
+                
                 if (isColliding) return;
 
+                swordHit.Play();
                 isColliding = true;
                 StartCoroutine(Reset());
 
