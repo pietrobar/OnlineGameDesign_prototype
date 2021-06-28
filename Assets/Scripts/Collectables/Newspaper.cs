@@ -33,6 +33,7 @@ public class Newspaper : MonoBehaviour
             //labelNewspaper.GetComponent<CountThings>().AddCount();
             newspaperCount++;
             Destroy(gameObject);
+            GameManager.instance.ShowNewspaper(other.gameObject);
         }
     }
 }

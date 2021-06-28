@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public GameObject panelPlay;
     public GameObject diePanel;
     public GameObject endLevelPanel;
+    public GameObject newsPaperPanel;
     public Text respawnCounter;
 
     public GameObject _player;
@@ -152,5 +153,25 @@ public class GameManager : MonoBehaviour
     public GameObject GetMyPlayer()
     {
         return this.myPlayer;
+    }
+
+    public void ShowNewspaper(GameObject playerWhoCollided)
+    {
+        Debug.Log(playerWhoCollided.name + " " + _player.name);
+        if(playerWhoCollided.name.Contains(_player.name))
+        {
+            newsPaperPanel.SetActive(true);
+            inGame = false;//la variabile inGame e' usata negli script dei giocatori per non permettere movimenti
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
+    }
+
+    public void CloseNewspaper()
+    {
+        inGame = true;//la variabile inGame e' usata negli script dei giocatori per non permettere movimenti
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        newsPaperPanel.SetActive(false);
     }
 }
