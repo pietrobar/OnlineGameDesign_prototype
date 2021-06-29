@@ -35,6 +35,20 @@ public class ChoseCharacter : MonoBehaviour
         PlayerPrefs.SetInt("CharacterIndex", characterIndex);
     }
 
+    public void indietro()
+    {
+        //int i = 2; i >= 0; i--
+        for (int i = 0; i < characters.Length; i++)//fa scomparire tutti i character
+        {
+            characters[i].SetActive(false);
+        }
+        //fa ricomparire solo quello giusto
+        this.characterIndex = (this.characterIndex + 2) % 3;
+        characters[this.characterIndex].SetActive(true);//rendo visibile solo quello giusto
+
+        PlayerPrefs.SetInt("CharacterIndex", characterIndex);
+    }
+
     public void FromChoseCaracterPanelToRoomChosingPanel()
     {
         //choseCharacterPanel.SetActive(false);
